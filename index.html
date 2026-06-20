@@ -6,11 +6,8 @@
     <title>BUG'S CLOSET — Bespoke 3D Jewelry Atelier</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+    
     <!-- Three.js Importmap -->
     <script type="importmap">
       {
@@ -20,81 +17,49 @@
         }
       }
     </script>
-
+    
     <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      
       :root {
-        --cherry-pink: #ff6b8b; /* cherry pink */
-        --frosting-pink: #ffb3c6; /* pastel soft pink */
-        --sprinkle-cream: #fff0f3; /* warm cream pink */
-        --cupcake-brown: #5c3d2e; /* dark chocolate brown for borders and text */
-        --sprinkle-blue: #a2d2ff;
+        --cherry-pink:     #ff6b8b; /* cherry pink */
+        --frosting-pink:   #ffb3c6; /* pastel soft pink */
+        --sprinkle-cream:  #fff0f3; /* warm cream pink */
+        --cupcake-brown:   #5c3d2e; /* dark chocolate brown for borders and text */
+        --sprinkle-blue:   #a2d2ff;
         --sprinkle-yellow: #fde2e4;
-        --font-arcade: "Press Start 2P", monospace;
-        --font-pixel: "VT323", monospace;
-        --ease: steps(4, end);
-        --text-muted: #88746a;
-        --text-dark: #3d281e;
-        --border-light: #e5c8cb;
-        --transition: all 0.15s var(--ease);
+        --font-arcade:     'Press Start 2P', monospace;
+        --font-pixel:      'VT323', monospace;
+        --ease:            steps(4, end);
+        --text-muted:      #88746a;
+        --text-dark:       #3d281e;
+        --border-light:    #e5c8cb;
+        --transition:      all 0.15s var(--ease);
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
       body {
         font-family: var(--font-pixel);
         font-size: 22px;
         line-height: 1.6;
         background-color: var(--sprinkle-cream);
         /* Repeating sprinkle pattern: tiny pink, blue and yellow pixel squares */
-        background-image:
-          linear-gradient(
-            90deg,
-            rgba(255, 107, 139, 0.08) 1px,
-            transparent 1px
-          ),
+        background-image: 
+          linear-gradient(90deg, rgba(255, 107, 139, 0.08) 1px, transparent 1px),
           linear-gradient(rgba(255, 107, 139, 0.08) 1px, transparent 1px),
           radial-gradient(var(--frosting-pink) 2px, transparent 2px),
           radial-gradient(var(--sprinkle-blue) 2px, transparent 2px);
-        background-size:
-          40px 40px,
-          40px 40px,
-          80px 80px,
-          80px 80px;
-        background-position:
-          0 0,
-          0 0,
-          20px 20px,
-          60px 60px;
+        background-size: 40px 40px, 40px 40px, 80px 80px, 80px 80px;
+        background-position: 0 0, 0 0, 20px 20px, 60px 60px;
         color: var(--cupcake-brown);
         -webkit-font-smoothing: none;
         -moz-osx-font-smoothing: none;
         overflow-x: hidden;
       }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      button,
-      input,
-      select {
-        font-family: inherit;
-        font-size: inherit;
-        color: inherit;
-        outline: none;
-        border: none;
-        background: none;
-      }
-
+      
+      a { color: inherit; text-decoration: none; }
+      button, input, select { font-family: inherit; font-size: inherit; color: inherit; outline: none; border: none; background: none; }
+      
       /* --- 8-BIT DOUBLE BORDERED WINDOWS --- */
       .pixel-window {
         background: #ffffff;
@@ -124,12 +89,8 @@
         background: var(--cherry-pink);
         border: 2px solid #ffffff;
       }
-      .pixel-window-header .dot:nth-child(2) {
-        background: var(--sprinkle-blue);
-      }
-      .pixel-window-header .dot:nth-child(3) {
-        background: #ffe3e3;
-      }
+      .pixel-window-header .dot:nth-child(2) { background: var(--sprinkle-blue); }
+      .pixel-window-header .dot:nth-child(3) { background: #ffe3e3; }
       .pixel-window-body {
         padding: 24px;
       }
@@ -148,9 +109,7 @@
         border: 4px solid var(--cupcake-brown);
         box-shadow: 4px 4px 0px var(--cupcake-brown);
         cursor: pointer;
-        transition:
-          transform 0.05s var(--ease),
-          box-shadow 0.05s var(--ease);
+        transition: transform 0.05s var(--ease), box-shadow 0.05s var(--ease);
         position: relative;
         user-select: none;
       }
@@ -184,130 +143,32 @@
         transform: translate(2px, 2px);
       }
 
-      .wrap {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-      .section {
-        padding: 80px 0;
-        scroll-margin-top: 80px;
-      }
-
-      .section-head {
-        text-align: center;
-        max-width: 680px;
-        margin: 0 auto 64px;
-      }
-      .section-head h2 {
-        font-family: var(--font-arcade);
-        font-size: 22px;
-        text-transform: uppercase;
-        color: var(--cherry-pink);
-        margin-bottom: 24px;
-        text-shadow: 2px 2px 0 var(--cupcake-brown);
-      }
-      .section-head p {
-        color: var(--text-muted);
-        font-size: 26px;
-        font-weight: bold;
-        line-height: 1.6;
-      }
-
+      .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+      .section { padding: 80px 0; scroll-margin-top: 80px; }
+      
+      .section-head { text-align: center; max-width: 680px; margin: 0 auto 64px; }
+      .section-head h2 { font-family: var(--font-arcade); font-size: 22px; text-transform: uppercase; color: var(--cherry-pink); margin-bottom: 24px; text-shadow: 2px 2px 0 var(--cupcake-brown); }
+      .section-head p { color: var(--text-muted); font-size: 26px; font-weight: bold; line-height: 1.6; }
+      
       /* ---------- NAVIGATION ---------- */
-      nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: var(--sprinkle-cream);
-        border-bottom: 4px solid var(--cupcake-brown);
-      }
-      .nav-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 80px;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-      .nav-logo {
-        font-family: var(--font-arcade);
-        font-size: 12px;
-        text-transform: uppercase;
-        color: var(--cupcake-brown);
-      }
-      .nav-logo em {
-        font-style: normal;
-        color: var(--cherry-pink);
-      }
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-      }
-      .nav-links a {
-        font-family: var(--font-arcade);
-        font-size: 9px;
-        text-transform: uppercase;
-        color: var(--cupcake-brown);
-        transition: var(--transition);
-      }
-      .nav-links a:hover {
-        color: var(--cherry-pink);
-        text-shadow: 1px 1px 0 var(--cupcake-brown);
-      }
-      .nav-links a.active-link {
-        color: var(--cherry-pink);
-        border-bottom: 3px solid var(--cherry-pink);
-        padding-bottom: 4px;
-      }
-      @media (max-width: 850px) {
-        .nav-links {
-          display: none;
-        }
-      }
-
+      nav { position: sticky; top: 0; z-index: 100; background: var(--sprinkle-cream); border-bottom: 4px solid var(--cupcake-brown); }
+      .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+      .nav-logo { font-family: var(--font-arcade); font-size: 12px; text-transform: uppercase; color: var(--cupcake-brown); }
+      .nav-logo em { font-style: normal; color: var(--cherry-pink); }
+      .nav-links { display: flex; align-items: center; gap: 24px; }
+      .nav-links a { font-family: var(--font-arcade); font-size: 9px; text-transform: uppercase; color: var(--cupcake-brown); transition: var(--transition); }
+      .nav-links a:hover { color: var(--cherry-pink); text-shadow: 1px 1px 0 var(--cupcake-brown); }
+      .nav-links a.active-link { color: var(--cherry-pink); border-bottom: 3px solid var(--cherry-pink); padding-bottom: 4px; }
+      @media (max-width: 850px) { .nav-links { display: none; } }
+      
       /* ---------- HERO PROGRESS STATS ---------- */
-      .hero {
-        padding: 100px 0;
-        background-color: #ffffff;
-        border-bottom: 4px solid var(--cupcake-brown);
-      }
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 64px;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-      .hero-copy h1 {
-        font-family: var(--font-arcade);
-        font-size: clamp(20px, 3.2vw, 36px);
-        line-height: 1.4;
-        color: var(--cupcake-brown);
-        margin-bottom: 24px;
-        text-shadow: 3px 3px 0 var(--frosting-pink);
-      }
-      .hero-copy h1 em {
-        font-style: normal;
-        color: var(--cherry-pink);
-      }
-      .hero-copy .lede {
-        font-size: 26px;
-        color: var(--text-muted);
-        margin-bottom: 40px;
-        max-width: 540px;
-      }
-      .hero-actions {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        margin-bottom: 48px;
-      }
-
+      .hero { padding: 100px 0; background-color: #ffffff; border-bottom: 4px solid var(--cupcake-brown); }
+      .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+      .hero-copy h1 { font-family: var(--font-arcade); font-size: clamp(20px, 3.2vw, 36px); line-height: 1.4; color: var(--cupcake-brown); margin-bottom: 24px; text-shadow: 3px 3px 0 var(--frosting-pink); }
+      .hero-copy h1 em { font-style: normal; color: var(--cherry-pink); }
+      .hero-copy .lede { font-size: 26px; color: var(--text-muted); margin-bottom: 40px; max-width: 540px; }
+      .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+      
       /* RPG HP/MP HUD Stat Bars */
       .hud-bar-container {
         display: flex;
@@ -337,81 +198,20 @@
       .hud-bar-fill.blue {
         background: var(--sprinkle-blue);
       }
-
-      .hero-visual {
-        position: relative;
-        display: flex;
-        justify-content: center;
-      }
-      .hero-img-container {
-        width: 100%;
-        aspect-ratio: 0.85;
-        background: var(--sprinkle-cream);
-        border: 4px solid var(--cupcake-brown);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 110px;
-        box-shadow: 6px 6px 0 var(--cherry-pink);
-      }
-      @media (max-width: 800px) {
-        .hero-grid {
-          grid-template-columns: 1fr;
-          gap: 48px;
-        }
-        .hero {
-          padding: 60px 0;
-        }
-      }
+      
+      .hero-visual { position: relative; display: flex; justify-content: center; }
+      .hero-img-container { width: 100%; aspect-ratio: 0.85; background: var(--sprinkle-cream); border: 4px solid var(--cupcake-brown); display: flex; align-items: center; justify-content: center; font-size: 110px; box-shadow: 6px 6px 0 var(--cherry-pink); }
+      @media (max-width: 800px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } .hero { padding: 60px 0; } }
 
       /* ---------- COLLECTIONS GRID ---------- */
-      .categories {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      .cat-card {
-        background: #ffffff;
-        border: 4px solid var(--cupcake-brown);
-        padding: 48px 32px;
-        text-align: center;
-        transition: var(--transition);
-        cursor: pointer;
-        box-shadow: 6px 6px 0 var(--cupcake-brown);
-      }
-      .cat-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--cherry-pink);
-        box-shadow: 8px 8px 0 var(--cherry-pink);
-      }
-      .cat-card.selected {
-        border-color: var(--cherry-pink);
-        background: var(--sprinkle-cream);
-        box-shadow: 6px 6px 0 var(--cupcake-brown);
-      }
-      .cat-card .cat-icon {
-        font-size: 44px;
-        margin-bottom: 24px;
-        display: inline-block;
-        filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.05));
-      }
-      .cat-card h3 {
-        font-family: var(--font-arcade);
-        font-size: 11px;
-        color: var(--cupcake-brown);
-        margin-bottom: 16px;
-      }
-      .cat-card p {
-        font-size: 20px;
-        color: var(--text-muted);
-      }
-      @media (max-width: 750px) {
-        .categories {
-          grid-template-columns: 1fr;
-        }
-      }
+      .categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
+      .cat-card { background: #ffffff; border: 4px solid var(--cupcake-brown); padding: 48px 32px; text-align: center; transition: var(--transition); cursor: pointer; box-shadow: 6px 6px 0 var(--cupcake-brown); }
+      .cat-card:hover { transform: translateY(-4px); border-color: var(--cherry-pink); box-shadow: 8px 8px 0 var(--cherry-pink); }
+      .cat-card.selected { border-color: var(--cherry-pink); background: var(--sprinkle-cream); box-shadow: 6px 6px 0 var(--cupcake-brown); }
+      .cat-card .cat-icon { font-size: 44px; margin-bottom: 24px; display: inline-block; filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.05)); }
+      .cat-card h3 { font-family: var(--font-arcade); font-size: 11px; color: var(--cupcake-brown); margin-bottom: 16px; }
+      .cat-card p { font-size: 20px; color: var(--text-muted); }
+      @media (max-width: 750px) { .categories { grid-template-columns: 1fr; } }
 
       /* ---------- LUXURY CUSTOMIZER VIEWPORT & ARCADE CABINET ---------- */
       .cabinet-container {
@@ -425,28 +225,15 @@
         overflow: hidden;
       }
       @media (max-width: 1000px) {
-        .cabinet-container {
-          grid-template-columns: 1fr;
-          gap: 0;
-        }
+        .cabinet-container { grid-template-columns: 1fr; gap: 0; }
       }
       @media (max-width: 1000px) {
-        .cabinet-control-pane {
-          max-height: none;
-          overflow-y: visible;
-          padding: 24px 16px;
-        }
+        .cabinet-control-pane { max-height: none; overflow-y: visible; padding: 24px 16px; }
       }
       @media (max-width: 600px) {
-        .canvas-wrap {
-          height: 380px;
-        }
-        .wrap {
-          padding: 0 16px;
-        }
-        .section {
-          padding: 40px 0;
-        }
+        .canvas-wrap { height: 380px; }
+        .wrap { padding: 0 16px; }
+        .section { padding: 40px 0; }
       }
       .cabinet-screen-pane {
         position: relative;
@@ -456,10 +243,7 @@
         background: #fbfbfa;
       }
       @media (max-width: 1000px) {
-        .cabinet-screen-pane {
-          border-right: none;
-          border-bottom: 6px solid var(--cupcake-brown);
-        }
+        .cabinet-screen-pane { border-right: none; border-bottom: 6px solid var(--cupcake-brown); }
       }
       .cabinet-screen-header {
         background: var(--cupcake-brown);
@@ -489,16 +273,52 @@
         overflow: hidden;
         touch-action: none;
       }
+      #three-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
       .canvas-wrap canvas {
         display: block;
         width: 100% !important;
         height: 100% !important;
       }
+      /* Retro scanline overlay for CRT arcade feel */
+      .canvas-wrap::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(92, 61, 46, 0.03) 2px,
+          rgba(92, 61, 46, 0.03) 4px
+        );
+        pointer-events: none;
+        z-index: 5;
+      }
+      /* Loading state for the 3D canvas */
+      .canvas-loading {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: var(--font-arcade);
+        font-size: 10px;
+        color: var(--cherry-pink);
+        z-index: 10;
+        animation: blink-load 1s steps(2, start) infinite;
+      }
+      @keyframes blink-load {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+      }
       .canvas-hud {
         position: absolute;
-        top: 24px;
-        left: 24px;
-        right: 24px;
+        top: 24px; left: 24px; right: 24px;
         display: flex;
         justify-content: space-between;
         pointer-events: none;
@@ -513,7 +333,7 @@
         color: var(--cupcake-brown);
         box-shadow: 4px 4px 0 var(--frosting-pink);
       }
-
+      
       .console-section {
         display: flex;
         flex-direction: column;
@@ -534,12 +354,8 @@
         align-items: center;
         gap: 8px;
       }
-      .console-title::before {
-        content: "▶";
-        font-size: 7px;
-        color: var(--sprinkle-blue);
-      }
-
+      .console-title::before { content: '▶'; font-size: 7px; color: var(--sprinkle-blue); }
+      
       /* Swatches & Selectors */
       .grid-selector {
         display: grid;
@@ -572,21 +388,9 @@
         background: var(--sprinkle-cream);
         box-shadow: 3px 3px 0 var(--cupcake-brown);
       }
-      .grid-item .icon {
-        font-size: 26px;
-        margin-bottom: 8px;
-        filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.05));
-      }
-      .grid-item .label {
-        font-size: 15px;
-        font-weight: bold;
-        color: var(--text-muted);
-        text-align: center;
-        line-height: 1.2;
-      }
-      .grid-item.active .label {
-        color: var(--cupcake-brown);
-      }
+      .grid-item .icon { font-size: 26px; margin-bottom: 8px; filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.05)); }
+      .grid-item .label { font-size: 15px; font-weight: bold; color: var(--text-muted); text-align: center; line-height: 1.2; }
+      .grid-item.active .label { color: var(--cupcake-brown); }
 
       /* Metal Swatches */
       .color-circles {
@@ -626,18 +430,14 @@
         font-weight: bold;
         color: var(--text-dark);
       }
-      .retro-slider-label span b {
-        color: var(--cherry-pink);
-      }
-
+      .retro-slider-label span b { color: var(--cherry-pink); }
+      
       input[type="range"].luxury-range {
         -webkit-appearance: none;
         width: 100%;
         background: transparent;
       }
-      input[type="range"].luxury-range:focus {
-        outline: none;
-      }
+      input[type="range"].luxury-range:focus { outline: none; }
       input[type="range"].luxury-range::-webkit-slider-runnable-track {
         width: 100%;
         height: 8px;
@@ -666,7 +466,7 @@
         border: 3px solid var(--cupcake-brown);
         cursor: pointer;
       }
-
+      
       /* Active attachments list */
       .charm-list-hud {
         display: flex;
@@ -694,22 +494,10 @@
         align-items: center;
         gap: 16px;
       }
-      .charm-list-item .charm-details .icon {
-        font-size: 20px;
-      }
-      .charm-list-item .charm-details .meta {
-        display: flex;
-        flex-direction: column;
-      }
-      .charm-list-item .charm-details .meta .name {
-        font-family: var(--font-arcade);
-        font-size: 8px;
-        color: var(--cupcake-brown);
-      }
-      .charm-list-item .charm-details .meta .info {
-        font-size: 16px;
-        color: var(--text-muted);
-      }
+      .charm-list-item .charm-details .icon { font-size: 20px; }
+      .charm-list-item .charm-details .meta { display: flex; flex-direction: column; }
+      .charm-list-item .charm-details .meta .name { font-family: var(--font-arcade); font-size: 8px; color: var(--cupcake-brown); }
+      .charm-list-item .charm-details .meta .info { font-size: 16px; color: var(--text-muted); }
       .charm-list-item .btn-remove {
         font-family: var(--font-arcade);
         font-size: 8px;
@@ -718,11 +506,8 @@
         padding: 4px;
         transition: var(--transition);
       }
-      .charm-list-item .btn-remove:hover {
-        color: #ffffff;
-        background: #d9534f;
-      }
-
+      .charm-list-item .btn-remove:hover { color: #ffffff; background: #d9534f; }
+      
       .price-console {
         background: #ffffff;
         border-top: 4px solid var(--cupcake-brown);
@@ -731,95 +516,37 @@
         justify-content: space-between;
         align-items: center;
       }
-      .price-console .lbl {
-        font-family: var(--font-arcade);
-        font-size: 9px;
-        color: var(--text-muted);
-      }
-      .price-console .amt {
-        font-family: var(--font-arcade);
-        font-size: 14px;
-        color: var(--cherry-pink);
-      }
+      .price-console .lbl { font-family: var(--font-arcade); font-size: 9px; color: var(--text-muted); }
+      .price-console .amt { font-family: var(--font-arcade); font-size: 14px; color: var(--cherry-pink); }
 
       /* ---------- EDITORIAL JOURNAL (GALLERY) ---------- */
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-      }
-      .g-card {
-        background: #ffffff;
-        border: 4px solid var(--cupcake-brown);
-        overflow: hidden;
-        transition: var(--transition);
-        box-shadow: 6px 6px 0 var(--cupcake-brown);
-      }
-      .g-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--cherry-pink);
-        box-shadow: 8px 8px 0 var(--cherry-pink);
-      }
-      .g-thumb {
-        aspect-ratio: 4/3;
-        background: var(--sprinkle-cream);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 56px;
-        color: var(--text-muted);
-        border-bottom: 4px solid var(--cupcake-brown);
-      }
-      .g-body {
-        padding: 24px;
-      }
-      .g-body h4 {
-        font-family: var(--font-arcade);
-        font-size: 9px;
-        color: var(--cupcake-brown);
-        margin-bottom: 8px;
-      }
-      .g-body .g-tag {
-        font-size: 18px;
-        font-weight: bold;
-        color: var(--cherry-pink);
-        text-transform: uppercase;
-      }
-      @media (max-width: 800px) {
-        .gallery-grid {
-          grid-template-columns: 1fr;
-          max-width: 400px;
-          margin: 0 auto;
-        }
-      }
+      .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+      .g-card { background: #ffffff; border: 4px solid var(--cupcake-brown); overflow: hidden; transition: var(--transition); box-shadow: 6px 6px 0 var(--cupcake-brown); }
+      .g-card:hover { transform: translateY(-4px); border-color: var(--cherry-pink); box-shadow: 8px 8px 0 var(--cherry-pink); }
+      .g-thumb { aspect-ratio: 4/3; background: var(--sprinkle-cream); display: flex; align-items: center; justify-content: center; font-size: 56px; color: var(--text-muted); border-bottom: 4px solid var(--cupcake-brown); }
+      .g-body { padding: 24px; }
+      .g-body h4 { font-family: var(--font-arcade); font-size: 9px; color: var(--cupcake-brown); margin-bottom: 8px; }
+      .g-body .g-tag { font-size: 18px; font-weight: bold; color: var(--cherry-pink); text-transform: uppercase; }
+      @media (max-width: 800px) { .gallery-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; } }
 
       /* ---------- RPG DIALOG ABOUT ---------- */
-      .about-grid {
-        display: grid;
-        grid-template-columns: 0.8fr 1.2fr;
-        gap: 48px;
-        align-items: center;
-        max-width: 960px;
-        margin: 0 auto;
-      }
-      .about-grid .portrait-frame {
-        width: 100%;
-        aspect-ratio: 1;
-        background: #ffffff;
-        border: 4px solid var(--cupcake-brown);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 72px;
+      .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; align-items: center; max-width: 960px; margin: 0 auto; }
+      .about-grid .portrait-frame { 
+        width: 100%; 
+        aspect-ratio: 1; 
+        background: #ffffff; 
+        border: 4px solid var(--cupcake-brown); 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 72px; 
         position: relative;
         box-shadow: 6px 6px 0 var(--cherry-pink);
       }
       .about-grid .portrait-frame::after {
-        content: "BUG";
+        content: 'BUG';
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        bottom: 0; left: 0; right: 0;
         background: var(--cherry-pink);
         color: #ffffff;
         font-family: var(--font-arcade);
@@ -836,147 +563,41 @@
         position: relative;
       }
       .rpg-dialog::after {
-        content: "◆";
+        content: '◆';
         position: absolute;
-        bottom: 12px;
-        right: 16px;
+        bottom: 12px; right: 16px;
         color: var(--cherry-pink);
         font-size: 18px;
         animation: pulse 0.8s infinite steps(2, start);
       }
-      .rpg-dialog h3 {
-        font-family: var(--font-arcade);
-        font-size: 11px;
-        color: var(--cherry-pink);
-        margin-bottom: 24px;
-      }
-      .rpg-dialog p {
-        font-size: 22px;
-        color: var(--cupcake-brown);
-        margin-bottom: 20px;
-      }
-      .rpg-dialog p:last-child {
-        margin-bottom: 0;
-      }
-      @media (max-width: 750px) {
-        .about-grid {
-          grid-template-columns: 1fr;
-        }
-      }
+      .rpg-dialog h3 { font-family: var(--font-arcade); font-size: 11px; color: var(--cherry-pink); margin-bottom: 24px; }
+      .rpg-dialog p { font-size: 22px; color: var(--cupcake-brown); margin-bottom: 20px; }
+      .rpg-dialog p:last-child { margin-bottom: 0; }
+      @media (max-width: 750px) { .about-grid { grid-template-columns: 1fr; } }
 
       /* ---------- CUSTOMER STORIES (TESTIMONIALS) ---------- */
-      .testi-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-      .testi-card {
-        padding: 36px;
-        border: 4px solid var(--cupcake-brown);
-        background: #ffffff;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 240px;
-        box-shadow: 6px 6px 0 var(--cupcake-brown);
-      }
-      .testi-card .stars {
-        font-size: 12px;
-        color: var(--cherry-pink);
-        margin-bottom: 16px;
-        letter-spacing: 2px;
-      }
-      .testi-card blockquote {
-        font-size: 20px;
-        color: var(--cupcake-brown);
-        margin-bottom: 24px;
-        line-height: 1.5;
-      }
-      .testi-card blockquote::before {
-        content: '"';
-        color: var(--cherry-pink);
-        font-family: var(--font-arcade);
-      }
-      .testi-card .author {
-        font-family: var(--font-arcade);
-        font-size: 8px;
-        color: var(--cherry-pink);
-        text-transform: uppercase;
-      }
-      @media (max-width: 750px) {
-        .testi-grid {
-          grid-template-columns: 1fr;
-          max-width: 400px;
-        }
-      }
+      .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1100px; margin: 0 auto; }
+      .testi-card { padding: 36px; border: 4px solid var(--cupcake-brown); background: #ffffff; display: flex; flex-direction: column; justify-content: space-between; min-height: 240px; box-shadow: 6px 6px 0 var(--cupcake-brown); }
+      .testi-card .stars { font-size: 12px; color: var(--cherry-pink); margin-bottom: 16px; letter-spacing: 2px; }
+      .testi-card blockquote { font-size: 20px; color: var(--cupcake-brown); margin-bottom: 24px; line-height: 1.5; }
+      .testi-card blockquote::before { content: '"'; color: var(--cherry-pink); font-family: var(--font-arcade); }
+      .testi-card .author { font-family: var(--font-arcade); font-size: 8px; color: var(--cherry-pink); text-transform: uppercase; }
+      @media (max-width: 750px) { .testi-grid { grid-template-columns: 1fr; max-width: 400px; } }
 
       /* ---------- FAQ QUEST LOG ACCORDIONS ---------- */
-      .faq-list {
-        max-width: 760px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .faq-item {
-        border: 4px solid var(--cupcake-brown);
-        background: #ffffff;
-        transition: var(--transition);
-        box-shadow: 4px 4px 0 var(--cupcake-brown);
-      }
-      .faq-q {
-        width: 100%;
-        text-align: left;
-        padding: 20px 28px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-family: var(--font-arcade);
-        font-size: 9px;
-        color: var(--cupcake-brown);
-        cursor: pointer;
-      }
-      .faq-q:hover {
-        color: var(--cherry-pink);
-      }
-      .faq-q .chev {
-        transition: transform 0.3s var(--transition);
-        color: var(--cherry-pink);
-        font-size: 14px;
-      }
-      .faq-item.open .chev {
-        transform: rotate(90deg);
-        color: var(--cupcake-brown);
-      }
-      .faq-item.open {
-        border-color: var(--cherry-pink);
-        box-shadow: 4px 4px 0 var(--cherry-pink);
-      }
-      .faq-a {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        background: var(--sprinkle-cream);
-      }
-      .faq-item.open .faq-a {
-        border-top: 4px solid var(--cupcake-brown);
-      }
-      .faq-a-inner {
-        padding: 20px 28px;
-        color: var(--cupcake-brown);
-        font-size: 20px;
-      }
+      .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+      .faq-item { border: 4px solid var(--cupcake-brown); background: #ffffff; transition: var(--transition); box-shadow: 4px 4px 0 var(--cupcake-brown); }
+      .faq-q { width: 100%; text-align: left; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-arcade); font-size: 9px; color: var(--cupcake-brown); cursor: pointer; }
+      .faq-q:hover { color: var(--cherry-pink); }
+      .faq-q .chev { transition: transform 0.3s var(--transition); color: var(--cherry-pink); font-size: 14px; }
+      .faq-item.open .chev { transform: rotate(90deg); color: var(--cupcake-brown); }
+      .faq-item.open { border-color: var(--cherry-pink); box-shadow: 4px 4px 0 var(--cherry-pink); }
+      .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); background: var(--sprinkle-cream); }
+      .faq-item.open .faq-a { max-height: 300px; border-top: 4px solid var(--cupcake-brown); }
+      .faq-a-inner { padding: 20px 28px; color: var(--cupcake-brown); font-size: 20px; }
 
       /* ---------- CONTACT PINK CRT TERMINAL ---------- */
-      .contact-box {
-        max-width: 720px;
-        margin: 0 auto;
-        border: 4px solid var(--cupcake-brown);
-        background: #ffffff;
-        box-shadow: 6px 6px 0 var(--cupcake-brown);
-      }
+      .contact-box { max-width: 720px; margin: 0 auto; border: 4px solid var(--cupcake-brown); background: #ffffff; box-shadow: 6px 6px 0 var(--cupcake-brown); }
       .terminal-header {
         padding: 20px 28px;
         font-family: var(--font-arcade);
@@ -1002,73 +623,73 @@
         flex-direction: column;
         gap: 8px;
       }
-      .terminal-field label {
-        font-family: var(--font-arcade);
-        font-size: 8px;
-        color: var(--cupcake-brown);
-      }
-      .terminal-field input {
-        width: 100%;
-        font-size: 20px;
-        color: var(--cupcake-brown);
-        padding: 12px 16px;
-        border: 3px solid var(--cupcake-brown);
-        background: #ffffff;
-        transition: var(--transition);
-      }
-      .terminal-field input:focus {
-        border-color: var(--cherry-pink);
-        background: #ffffff;
-      }
-
+      .terminal-field label { font-family: var(--font-arcade); font-size: 8px; color: var(--cupcake-brown); }
+      .terminal-field input { width: 100%; font-size: 20px; color: var(--cupcake-brown); padding: 12px 16px; border: 3px solid var(--cupcake-brown); background: #ffffff; transition: var(--transition); }
+      .terminal-field input:focus { border-color: var(--cherry-pink); background: #ffffff; }
+      
       /* ---------- FOOTER ---------- */
-      footer {
-        text-align: center;
-        padding: 80px 32px;
-        border-top: 4px solid var(--cupcake-brown);
-        background: #ffffff;
-      }
-      footer .foot-logo {
-        font-family: var(--font-arcade);
-        font-size: 11px;
-        text-transform: uppercase;
-        color: var(--cupcake-brown);
-        margin-bottom: 24px;
-      }
-      .foot-links {
-        display: center;
-        justify-content: center;
-        gap: 32px;
-        margin-bottom: 32px;
-        flex-wrap: wrap;
-      }
-      .foot-links a {
-        font-family: var(--font-arcade);
-        font-size: 8px;
-        color: var(--text-muted);
-        transition: var(--transition);
-        margin: 0 16px;
-      }
-      .foot-links a:hover {
-        color: var(--cherry-pink);
-      }
-      footer .foot-note {
-        font-family: var(--font-arcade);
-        font-size: 8px;
-        color: var(--text-muted);
-        line-height: 1.8;
+      footer { text-align: center; padding: 80px 32px; border-top: 4px solid var(--cupcake-brown); background: #ffffff; }
+      footer .foot-logo { font-family: var(--font-arcade); font-size: 11px; text-transform: uppercase; color: var(--cupcake-brown); margin-bottom: 24px; }
+      .foot-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 32px; flex-wrap: wrap; }
+      .foot-links a { font-family: var(--font-arcade); font-size: 8px; color: var(--text-muted); transition: var(--transition); margin: 0 16px; }
+      .foot-links a:hover { color: var(--cherry-pink); }
+      footer .foot-note { font-family: var(--font-arcade); font-size: 8px; color: var(--text-muted); line-height: 1.8; }
+      
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
       }
 
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
-        100% {
-          transform: scale(1);
-        }
+      /* Enhanced hero image container with animated pixel border */
+      .hero-img-container {
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-img-container::before {
+        content: '';
+        position: absolute;
+        top: -2px; left: -2px; right: -2px; bottom: -2px;
+        background: linear-gradient(45deg, var(--cherry-pink), var(--sprinkle-blue), var(--frosting-pink), var(--cherry-pink));
+        background-size: 300% 300%;
+        animation: gradient-border 4s steps(8) infinite;
+        z-index: -1;
+      }
+      @keyframes gradient-border {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Gallery card thumbnail shimmer */
+      .g-thumb {
+        position: relative;
+        overflow: hidden;
+      }
+      .g-thumb::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%; width: 50%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        animation: thumb-shimmer 3s steps(12) infinite;
+      }
+      @keyframes thumb-shimmer {
+        0% { left: -50%; }
+        100% { left: 150%; }
+      }
+
+      /* Section entrance animation */
+      .section {
+        animation: section-in 0.3s ease-out;
+      }
+      @keyframes section-in {
+        from { opacity: 0.85; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Pixel cursor for interactive canvas */
+      .canvas-wrap:hover {
+        cursor: crosshair;
       }
     </style>
   </head>
@@ -1091,12 +712,8 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <h1>Step Into <em>Bug's</em> Closet 🧁</h1>
-          <p class="lede">
-            Design your signature beaded lariat online. Threaded with organic
-            volcanic stone, turquoise disc plates, and hammered copper charms on
-            a sleek black cord.
-          </p>
-
+          <p class="lede">Design your signature beaded lariat online. Threaded with organic volcanic stone, turquoise disc plates, and hammered copper charms on a sleek black cord.</p>
+          
           <!-- RPG HUD Bars -->
           <div class="hud-bar-container">
             <div class="hud-bar-label">
@@ -1104,25 +721,27 @@
               <span>90%</span>
             </div>
             <div class="hud-bar">
-              <div class="hud-bar-fill" style="width: 90%"></div>
+              <div class="hud-bar-fill" style="width: 90%;"></div>
             </div>
-
-            <div class="hud-bar-label" style="margin-top: 8px">
+            
+            <div class="hud-bar-label" style="margin-top: 8px;">
               <span>GEM RESONANCE (MP)</span>
               <span>70%</span>
             </div>
             <div class="hud-bar">
-              <div class="hud-bar-fill blue" style="width: 70%"></div>
+              <div class="hud-bar-fill blue" style="width: 70%;"></div>
             </div>
           </div>
-
+          
           <div class="hero-actions">
             <a href="#showroom" class="luxury-btn btn-gold">Launch Studio</a>
             <a href="#work" class="luxury-btn btn-outline">Collections</a>
           </div>
         </div>
         <div class="hero-visual">
-          <div class="hero-img-container">🧁</div>
+          <div class="hero-img-container">
+            🧁
+          </div>
         </div>
       </div>
     </section>
@@ -1131,35 +750,23 @@
     <section class="section" id="work">
       <div class="section-head">
         <h2>Fine Disciplines</h2>
-        <p>
-          Curated offerings combining pixelated retro templates with heirloom
-          craftsmanship.
-        </p>
+        <p>Curated offerings combining pixelated retro templates with heirloom craftsmanship.</p>
       </div>
       <div class="categories wrap">
         <div class="cat-card">
           <span class="cat-icon">💍</span>
           <h3>Bespoke Necklaces</h3>
-          <p>
-            Black threads, slide stones, and baroque pearl slides — design in
-            our pink retro studio cabinet.
-          </p>
+          <p>Black threads, slide stones, and baroque pearl slides — design in our pink retro studio cabinet.</p>
         </div>
         <div class="cat-card">
           <span class="cat-icon">🪡</span>
           <h3>Fine Embroidery</h3>
-          <p>
-            Hand-threaded geometric textile hoops stitched on organic cupcake
-            linen frames.
-          </p>
+          <p>Hand-threaded geometric textile hoops stitched on organic cupcake linen frames.</p>
         </div>
         <div class="cat-card">
           <span class="cat-icon">📖</span>
           <h3>Editorial Art</h3>
-          <p>
-            Signature custom-illustrated book plates and retro covers for
-            fantasy bibliophiles.
-          </p>
+          <p>Signature custom-illustrated book plates and retro covers for fantasy bibliophiles.</p>
         </div>
       </div>
     </section>
@@ -1168,10 +775,7 @@
     <section class="section showroom" id="showroom">
       <div class="section-head">
         <h2>Bespoke Customizer Cabinet</h2>
-        <p>
-          Drag &amp; drop charms onto the canvas, or double-click to add. Click
-          &amp; drag charms in the 3D viewport to slide them.
-        </p>
+        <p>Drag &amp; drop charms onto the canvas, or double-click to add. Click &amp; drag charms in the 3D viewport to slide them.</p>
       </div>
       <div class="wrap">
         <div class="cabinet-container">
@@ -1181,63 +785,22 @@
               <span>CONSOLE MONITOR [BUG-OS v1.2]</span>
             </div>
             <div class="canvas-wrap">
-              <div id="three-container" style="width: 100%; height: 100%"></div>
+              <div class="canvas-loading" id="canvas-loading">▶ LOADING 3D ENGINE...</div>
+              <div id="three-container"></div>
               <div class="canvas-hud">
                 <div class="hud-box">PBR REFRACT ACTIVE</div>
-                <div
-                  class="hud-box"
-                  id="hud-price"
-                  style="color: var(--cherry-pink)"
-                >
-                  $250
-                </div>
+                <div class="hud-box" id="hud-price" style="color: var(--cherry-pink);">$250</div>
               </div>
             </div>
             <div class="price-console">
               <span class="lbl">TALLY INVEST:</span>
               <span class="amt" id="total-price-display">$250.00</span>
             </div>
-            <div
-              style="
-                background: #ffffff;
-                padding: 16px 24px;
-                display: flex;
-                gap: 12px;
-                border-top: 4px solid var(--cupcake-brown);
-                justify-content: center;
-              "
-            >
-              <button
-                class="luxury-btn btn-outline"
-                id="zoom-in"
-                title="Zoom in"
-                style="padding: 8px 16px"
-              >
-                🔍+
-              </button>
-              <button
-                class="luxury-btn btn-outline"
-                id="zoom-out"
-                title="Zoom out"
-                style="padding: 8px 16px"
-              >
-                🔍−
-              </button>
-              <button
-                class="luxury-btn btn-outline"
-                id="reset-view"
-                title="Reset Camera"
-                style="padding: 8px 16px"
-              >
-                ⟲ Camera
-              </button>
-              <button
-                class="luxury-btn btn-gold"
-                id="btn-order"
-                style="flex: 1"
-              >
-                LOCK CONFIG 🛒
-              </button>
+            <div style="background:#ffffff; padding:16px 24px; display:flex; gap:12px; border-top:4px solid var(--cupcake-brown); justify-content: center;">
+              <button class="luxury-btn btn-outline" id="zoom-in" title="Zoom in" style="padding: 8px 16px;">🔍+</button>
+              <button class="luxury-btn btn-outline" id="zoom-out" title="Zoom out" style="padding: 8px 16px;">🔍−</button>
+              <button class="luxury-btn btn-outline" id="reset-view" title="Reset Camera" style="padding: 8px 16px;">⟲ Camera</button>
+              <button class="luxury-btn btn-gold" id="btn-order" style="flex: 1;">LOCK CONFIG 🛒</button>
             </div>
           </div>
 
@@ -1246,360 +809,78 @@
             <!-- Chain/Base Style Selector -->
             <div class="console-section">
               <div class="console-title">Select Base Style</div>
-
-              <div
-                style="
-                  font-family: var(--font-arcade);
-                  font-size: 8px;
-                  color: var(--text-muted);
-                  margin-bottom: 6px;
-                  letter-spacing: 0.05em;
-                "
-              >
-                Chains &amp; Metals
-              </div>
-              <div
-                class="color-circles"
-                id="metal-base-selector"
-                style="margin-bottom: 16px"
-              >
-                <div
-                  class="color-circle"
-                  data-base="yellow_gold"
-                  style="
-                    background: linear-gradient(
-                      135deg,
-                      #fbe3b5 0%,
-                      #e5c158 50%,
-                      #b8952a 100%
-                    );
-                  "
-                  title="Yellow Gold Chain"
-                ></div>
-                <div
-                  class="color-circle"
-                  data-base="yellow_gold_thin"
-                  style="
-                    background: linear-gradient(
-                      135deg,
-                      #fbe3b5 0%,
-                      #e5c158 50%,
-                      #b8952a 100%
-                    );
-                    position: relative;
-                    border-style: dashed;
-                    border-color: var(--border-light);
-                  "
-                  title="Ultra-Thin Yellow Gold Chain"
-                >
-                  <span
-                    style="
-                      font-size: 8px;
-                      position: absolute;
-                      top: 50%;
-                      left: 50%;
-                      transform: translate(-50%, -50%);
-                      color: #000;
-                      font-weight: 800;
-                      pointer-events: none;
-                    "
-                    >XS</span
-                  >
+              
+              <div style="font-family: var(--font-arcade); font-size: 8px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">Chains &amp; Metals</div>
+              <div class="color-circles" id="metal-base-selector" style="margin-bottom: 16px;">
+                <div class="color-circle" data-base="yellow_gold" style="background: linear-gradient(135deg, #fbe3b5 0%, #e5c158 50%, #b8952a 100%);" title="Yellow Gold Chain"></div>
+                <div class="color-circle" data-base="yellow_gold_thin" style="background: linear-gradient(135deg, #fbe3b5 0%, #e5c158 50%, #b8952a 100%); position: relative; border-style: dashed; border-color: var(--border-light);" title="Ultra-Thin Yellow Gold Chain">
+                  <span style="font-size: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 800; pointer-events: none;">XS</span>
                 </div>
-                <div
-                  class="color-circle"
-                  data-base="white_gold"
-                  style="
-                    background: linear-gradient(
-                      135deg,
-                      #ffffff 0%,
-                      #e2e2e2 50%,
-                      #bababa 100%
-                    );
-                  "
-                  title="White Gold Chain"
-                ></div>
-                <div
-                  class="color-circle"
-                  data-base="rose_gold"
-                  style="
-                    background: linear-gradient(
-                      135deg,
-                      #fad2c4 0%,
-                      #e0a899 50%,
-                      #b87b6c 100%
-                    );
-                  "
-                  title="Rose Gold Chain"
-                ></div>
-                <div
-                  class="color-circle"
-                  data-base="platinum_thin"
-                  style="
-                    background: linear-gradient(
-                      135deg,
-                      #f0f1f2 0%,
-                      #d5d6d8 50%,
-                      #9fa1a6 100%
-                    );
-                    position: relative;
-                    border-style: dashed;
-                    border-color: var(--border-light);
-                  "
-                  title="Ultra-Thin Platinum Chain"
-                >
-                  <span
-                    style="
-                      font-size: 8px;
-                      position: absolute;
-                      top: 50%;
-                      left: 50%;
-                      transform: translate(-50%, -50%);
-                      color: #000;
-                      font-weight: 800;
-                      pointer-events: none;
-                    "
-                    >XS</span
-                  >
+                <div class="color-circle" data-base="white_gold" style="background: linear-gradient(135deg, #ffffff 0%, #e2e2e2 50%, #bababa 100%);" title="White Gold Chain"></div>
+                <div class="color-circle" data-base="rose_gold" style="background: linear-gradient(135deg, #fad2c4 0%, #e0a899 50%, #b87b6c 100%);" title="Rose Gold Chain"></div>
+                <div class="color-circle" data-base="platinum_thin" style="background: linear-gradient(135deg, #f0f1f2 0%, #d5d6d8 50%, #9fa1a6 100%); position: relative; border-style: dashed; border-color: var(--border-light);" title="Ultra-Thin Platinum Chain">
+                  <span style="font-size: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 800; pointer-events: none;">XS</span>
                 </div>
               </div>
 
-              <div
-                style="
-                  font-family: var(--font-arcade);
-                  font-size: 8px;
-                  color: var(--text-muted);
-                  margin-bottom: 6px;
-                  letter-spacing: 0.05em;
-                "
-              >
-                Threads &amp; Organic Beads
-              </div>
+              <div style="font-family: var(--font-arcade); font-size: 8px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">Threads &amp; Organic Beads</div>
               <div class="color-circles" id="thread-base-selector">
-                <div
-                  class="color-circle"
-                  data-base="beads_organic"
-                  style="
-                    background: radial-gradient(
-                      circle,
-                      #fcfbfa 0%,
-                      #dfdcd6 70%,
-                      #b8b4ad 100%
-                    );
-                  "
-                  title="Organic Beaded Strand"
-                ></div>
-                <div
-                  class="color-circle"
-                  data-base="beads_turquoise"
-                  style="
-                    background: radial-gradient(
-                      circle,
-                      #e0fbfc 0%,
-                      #2bbab4 70%,
-                      #15726e 100%
-                    );
-                  "
-                  title="Turquoise Bead Strand"
-                ></div>
-                <div
-                  class="color-circle"
-                  data-base="rope_homemade"
-                  style="
-                    background: linear-gradient(
-                      45deg,
-                      #c4b39a 25%,
-                      #a8967d 25%,
-                      #a8967d 50%,
-                      #c4b39a 50%,
-                      #c4b39a 75%,
-                      #a8967d 75%
-                    );
-                    background-size: 10px 10px;
-                  "
-                  title="Homemade Slim Rope"
-                ></div>
-                <div
-                  class="color-circle active"
-                  data-base="thread_nylon"
-                  style="background: #111111"
-                  title="Nylon Black Thread"
-                ></div>
-                <div
-                  class="color-circle"
-                  data-base="thread_crimson"
-                  style="background: #a91e2b"
-                  title="Crimson Silk Thread"
-                ></div>
-                <div
-                  class="color-circle"
-                  data-base="thread_green"
-                  style="background: #1f3c30"
-                  title="Forest Green Cord"
-                ></div>
-                <div
-                  class="color-circle"
-                  data-base="thread_champagne"
-                  style="background: #dfceb8"
-                  title="Champagne Silk Cord"
-                ></div>
+                <div class="color-circle" data-base="beads_organic" style="background: radial-gradient(circle, #fcfbfa 0%, #dfdcd6 70%, #b8b4ad 100%);" title="Organic Beaded Strand"></div>
+                <div class="color-circle" data-base="beads_turquoise" style="background: radial-gradient(circle, #e0fbfc 0%, #2bbab4 70%, #15726e 100%);" title="Turquoise Bead Strand"></div>
+                <div class="color-circle" data-base="rope_homemade" style="background: linear-gradient(45deg, #c4b39a 25%, #a8967d 25%, #a8967d 50%, #c4b39a 50%, #c4b39a 75%, #a8967d 75%); background-size: 10px 10px;" title="Homemade Slim Rope"></div>
+                <div class="color-circle active" data-base="thread_nylon" style="background: #111111;" title="Nylon Black Thread"></div>
+                <div class="color-circle" data-base="thread_crimson" style="background: #a91e2b;" title="Crimson Silk Thread"></div>
+                <div class="color-circle" data-base="thread_green" style="background: #1f3c30;" title="Forest Green Cord"></div>
+                <div class="color-circle" data-base="thread_champagne" style="background: #dfceb8;" title="Champagne Silk Cord"></div>
               </div>
             </div>
 
             <!-- Add Bespoke Charms -->
             <div class="console-section">
-              <div
-                class="console-title"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
+              <div class="console-title" style="display: flex; justify-content: space-between; align-items: center;">
                 <span>Charm Inventory</span>
-                <span
-                  style="
-                    font-family: var(--font-arcade);
-                    font-size: 6px;
-                    color: var(--text-muted);
-                  "
-                  >Drag / Dbl-Click</span
-                >
+                <span style="font-family: var(--font-arcade); font-size: 6px; color: var(--text-muted);">Drag / Dbl-Click</span>
               </div>
               <div class="grid-selector" id="charms-inventory">
-                <div
-                  class="grid-item"
-                  data-charm="turquoise_disc"
-                  title="Turquoise Disc Bead"
-                  draggable="true"
-                >
+                <div class="grid-item" data-charm="turquoise_disc" title="Turquoise Disc Bead" draggable="true">
                   <span class="icon">🟢</span>
                   <span class="label">Turquoise</span>
                 </div>
-                <div
-                  class="grid-item"
-                  data-charm="astrolabe_slide"
-                  title="Celestial Astrolabe Disc"
-                  draggable="true"
-                >
+                <div class="grid-item" data-charm="astrolabe_slide" title="Celestial Astrolabe Disc" draggable="true">
                   <span class="icon">🧭</span>
                   <span class="label">Astrolabe</span>
                 </div>
-                <div
-                  class="grid-item"
-                  data-charm="gold_nugget"
-                  title="Raw 24k Gold Nugget"
-                  draggable="true"
-                >
+                <div class="grid-item" data-charm="gold_nugget" title="Raw 24k Gold Nugget" draggable="true">
                   <span class="icon">🪙</span>
                   <span class="label">Raw Nugget</span>
                 </div>
-                <div
-                  class="grid-item"
-                  data-charm="hammered_drop"
-                  title="Hammered Copper Drop"
-                  draggable="true"
-                >
+                <div class="grid-item" data-charm="hammered_drop" title="Hammered Copper Drop" draggable="true">
                   <span class="icon">🔨</span>
                   <span class="label">Copper Drop</span>
-                </div>
-                <div
-                  class="grid-item"
-                  data-charm="moonstone_cab"
-                  title="Moonstone Cabochon"
-                  draggable="true"
-                >
-                  <span class="icon">🌙</span>
-                  <span class="label">Moonstone</span>
-                </div>
-                <div
-                  class="grid-item"
-                  data-charm="obsidian_arrow"
-                  title="Obsidian Arrowhead"
-                  draggable="true"
-                >
-                  <span class="icon">⬛</span>
-                  <span class="label">Obsidian</span>
-                </div>
-                <div
-                  class="grid-item"
-                  data-charm="sun_medallion"
-                  title="Sun Medallion"
-                  draggable="true"
-                >
-                  <span class="icon">☀️</span>
-                  <span class="label">Sun Disc</span>
-                </div>
-                <div
-                  class="grid-item"
-                  data-charm="bone_rune"
-                  title="Bone Rune Charm"
-                  draggable="true"
-                >
-                  <span class="icon">🦴</span>
-                  <span class="label">Bone Rune</span>
-                </div>
-                <div
-                  class="grid-item"
-                  data-charm="pyrite_cluster"
-                  title="Pyrite Cluster"
-                  draggable="true"
-                >
-                  <span class="icon">✨</span>
-                  <span class="label">Pyrite</span>
-                </div>
-                <div
-                  class="grid-item"
-                  data-charm="spiral_shell"
-                  title="Spiral Shell Pendant"
-                  draggable="true"
-                >
-                  <span class="icon">🐚</span>
-                  <span class="label">Shell Spiral</span>
                 </div>
               </div>
             </div>
 
             <!-- Edit Selected Charm -->
-            <div
-              class="console-section"
-              id="editor-section"
-              style="display: none"
-            >
-              <div class="console-title" id="editor-title">
-                Configure Attachment
-              </div>
-
+            <div class="console-section" id="editor-section" style="display: none;">
+              <div class="console-title" id="editor-title">Configure Attachment</div>
+              
               <!-- Position Slider -->
               <div class="retro-slider-group">
                 <div class="retro-slider-label">
                   <span>Position along curve:</span>
                   <span><b id="slider-pos-val">50</b>%</span>
                 </div>
-                <input
-                  type="range"
-                  min="10"
-                  max="90"
-                  value="50"
-                  class="luxury-range"
-                  id="slider-pos"
-                />
+                <input type="range" min="10" max="90" value="50" class="luxury-range" id="slider-pos" />
               </div>
-
+              
               <!-- Scale Slider -->
               <div class="retro-slider-group">
                 <div class="retro-slider-label">
                   <span>Charm Dimension Scale:</span>
                   <span><b id="slider-scale-val">60</b>%</span>
                 </div>
-                <input
-                  type="range"
-                  min="30"
-                  max="150"
-                  value="60"
-                  class="luxury-range"
-                  id="slider-scale"
-                />
+                <input type="range" min="30" max="150" value="60" class="luxury-range" id="slider-scale" />
               </div>
 
               <!-- Rotation Slider -->
@@ -1608,47 +889,18 @@
                   <span>Facing Rotation Angle:</span>
                   <span><b id="slider-rot-val">0</b>°</span>
                 </div>
-                <input
-                  type="range"
-                  min="-180"
-                  max="180"
-                  value="0"
-                  class="luxury-range"
-                  id="slider-rot"
-                />
+                <input type="range" min="-180" max="180" value="0" class="luxury-range" id="slider-rot" />
               </div>
             </div>
 
             <!-- Active Charms List -->
             <div class="console-section">
-              <div
-                class="console-title"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
+              <div class="console-title" style="display: flex; justify-content: space-between; align-items: center;">
                 <span>Active Attachments</span>
-                <button
-                  class="luxury-btn btn-outline"
-                  id="clear-assets"
-                  style="padding: 4px 10px; font-size: 8px; font-weight: 600"
-                >
-                  Remove All
-                </button>
+                <button class="luxury-btn btn-outline" id="clear-assets" style="padding: 4px 10px; font-size: 8px; font-weight: 600;">Remove All</button>
               </div>
               <div class="charm-list-hud" id="active-charms-list">
-                <div
-                  style="
-                    text-align: center;
-                    color: var(--text-muted);
-                    font-size: 18px;
-                    padding: 16px;
-                  "
-                >
-                  No charms loaded.
-                </div>
+                <div style="text-align: center; color: var(--text-muted); font-size: 18px; padding: 16px;">No charms loaded.</div>
               </div>
             </div>
           </div>
@@ -1660,10 +912,7 @@
     <section class="section" id="gallery">
       <div class="section-head">
         <h2>Bug's Atelier Journal</h2>
-        <p>
-          A showcase of bespoke commissions created by our patrons,
-          hand-rendered in the workshop.
-        </p>
+        <p>A showcase of bespoke commissions created by our patrons, hand-rendered in the workshop.</p>
       </div>
       <div class="wrap">
         <div class="gallery-grid">
@@ -1699,37 +948,16 @@
           <div class="portrait-frame">🧁</div>
           <div class="rpg-dialog">
             <h3>NPC CONVERSATION: THE SMITH</h3>
-            <p>
-              "Welcome to Bug's Closet, traveler. Every design constructed in
-              our interactive virtual suite is translated into physical
-              blueprints by our design leads."
-            </p>
-            <p>
-              "Our workshop merges mathematical geometry generation with
-              standard classic hand fabrication, ensuring that details like claw
-              settings and jump rings exhibit flawless longevity."
-            </p>
-            <a
-              href="#contact"
-              class="luxury-btn btn-gold"
-              style="margin-top: 24px"
-              >Accept Quest</a
-            >
+            <p>"Welcome to Bug's Closet, traveler. Every design constructed in our interactive virtual suite is translated into physical blueprints by our design leads."</p>
+            <p>"Our workshop merges mathematical geometry generation with standard classic hand fabrication, ensuring that details like claw settings and jump rings exhibit flawless longevity."</p>
+            <a href="#contact" class="luxury-btn btn-gold" style="margin-top: 24px;">Accept Quest</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==================== TESTIMONIALS ==================== -->
-    <section
-      class="section"
-      id="testimonials"
-      style="
-        background-color: #ffffff;
-        border-top: 4px solid var(--cupcake-brown);
-        border-bottom: 4px solid var(--cupcake-brown);
-      "
-    >
+    <section class="section" id="testimonials" style="background-color: #ffffff; border-top: 4px solid var(--cupcake-brown); border-bottom: 4px solid var(--cupcake-brown);">
       <div class="section-head">
         <h2>Atelier Critiques</h2>
         <p>Documented correspondence from patrons on bespoke commissions.</p>
@@ -1737,27 +965,17 @@
       <div class="testi-grid wrap">
         <div class="testi-card">
           <div class="stars">💖💖💖💖💖</div>
-          <blockquote>
-            "The slide beads look exactly like my natural stone set, sitting
-            directly on the thread rather than dangling below it. Masterful
-            update."
-          </blockquote>
+          <blockquote>"The slide beads look exactly like my natural stone set, sitting directly on the thread rather than dangling below it. Masterful update."</blockquote>
           <div class="author">— Clara V. (Geneva)</div>
         </div>
         <div class="testi-card">
           <div class="stars">💖💖💖💖💖</div>
-          <blockquote>
-            "Clicking and dragging the charms directly on the 3D necklace is so
-            satisfying. The interface is incredibly premium."
-          </blockquote>
+          <blockquote>"Clicking and dragging the charms directly on the 3D necklace is so satisfying. The interface is incredibly premium."</blockquote>
           <div class="author">— Nicholas D. (New York)</div>
         </div>
         <div class="testi-card">
           <div class="stars">💖💖💖💖💖</div>
-          <blockquote>
-            "High-end craftsmanship that perfectly mirrors the virtual
-            telemetry. The organic turquoise strand is simply gorgeous."
-          </blockquote>
+          <blockquote>"High-end craftsmanship that perfectly mirrors the virtual telemetry. The organic turquoise strand is simply gorgeous."</blockquote>
           <div class="author">— Beatrice L. (Tokyo)</div>
         </div>
       </div>
@@ -1767,23 +985,13 @@
     <section class="section" id="faq">
       <div class="section-head">
         <h2>Quest Log: FAQ</h2>
-        <p>
-          Answers to common queries regarding bespoke customization and
-          logistics.
-        </p>
+        <p>Answers to common queries regarding bespoke customization and logistics.</p>
       </div>
       <div class="faq-list" id="faq-list"></div>
     </section>
 
     <!-- ==================== INQUIRE / CONTACT ==================== -->
-    <section
-      class="section"
-      id="contact"
-      style="
-        background-color: #ffffff;
-        border-top: 4px solid var(--cupcake-brown);
-      "
-    >
+    <section class="section" id="contact" style="background-color: #ffffff; border-top: 4px solid var(--cupcake-brown);">
       <div class="wrap">
         <div class="contact-box">
           <div class="terminal-header">
@@ -1802,27 +1010,13 @@
               </div>
               <div class="terminal-field">
                 <label>Correspondence Address</label>
-                <input
-                  type="email"
-                  id="contact-email"
-                  placeholder="Email address"
-                />
+                <input type="email" id="contact-email" placeholder="Email address" />
               </div>
               <div class="terminal-field">
                 <label>Commission Telemetry / Request Notes</label>
-                <input
-                  type="text"
-                  id="contact-msg"
-                  placeholder="Specify base metal, gemstones, or bespoke elements"
-                />
+                <input type="text" id="contact-msg" placeholder="Specify base metal, gemstones, or bespoke elements" />
               </div>
-              <button
-                class="luxury-btn btn-gold"
-                id="mail-submit"
-                style="align-self: flex-start; margin-top: 16px"
-              >
-                [EXECUTE TRANSMIT]
-              </button>
+              <button class="luxury-btn btn-gold" id="mail-submit" style="align-self: flex-start; margin-top: 16px;">[EXECUTE TRANSMIT]</button>
             </div>
           </div>
         </div>
@@ -1839,11 +1033,7 @@
         <a href="#faq">FAQ</a>
         <a href="#contact">Inquire</a>
       </div>
-      <p class="foot-note">
-        © 2026 Bug's Closet 🧁. Designed for JRPG adventurers.<br />All
-        creations forged in small, meticulously-controlled batches in Geneva and
-        Tokyo.
-      </p>
+      <p class="foot-note">© 2026 Bug's Closet 🧁. Designed for JRPG adventurers.<br>All creations forged in small, meticulously-controlled batches in Geneva and Tokyo.</p>
     </footer>
 
     <script type="module">
@@ -1851,65 +1041,46 @@
       import { OrbitControls } from "three/addons/controls/OrbitControls.js";
       import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 
+
       // =========================================================================
       // FAQ Setup with [ ] to [x] checkbox mechanics
       // =========================================================================
       const FAQS = [
-        {
-          q: "How does the customizer transition to a physical piece?",
-          a: "Once your telemetry is secured via checkout, our design leads translate the coordinate geometries into 3D waxes and forge the metal structure by hand using fine casting techniques.",
-        },
-        {
-          q: "What metals and threads are supported in the studio?",
-          a: "We cast in 18k Gold and Platinum chains, but also offer hand-spun hemp ropes, black nylon threads, colored silk cords, and organic beaded strands.",
-        },
-        {
-          q: "Can I supply my own custom center stone?",
-          a: "Certainly. If you have an heirloom gem, we can customize the slide geometries to cradle its unique dimensions exactly. Send an inquiry below to arrange a secure shipment.",
-        },
-        {
-          q: "How long does a bespoke commission take?",
-          a: "Standard design reviews are locked within 5 cycles. Forging, thread spinning, and gemstone setting takes 3 to 4 weeks, with fully insured global logistics included.",
-        },
-        {
-          q: "Are the gemstones certified?",
-          a: "All diamonds over 0.25ct are accompanied by a GIA certificate, and colored gemstones are certified by regional gemological institutes.",
-        },
+        { q: "How does the customizer transition to a physical piece?", a: "Once your telemetry is secured via checkout, our design leads translate the coordinate geometries into 3D waxes and forge the metal structure by hand using fine casting techniques." },
+        { q: "What metals and threads are supported in the studio?", a: "We cast in 18k Gold and Platinum chains, but also offer hand-spun hemp ropes, black nylon threads, colored silk cords, and organic beaded strands." },
+        { q: "Can I supply my own custom center stone?", a: "Certainly. If you have an heirloom gem, we can customize the slide geometries to cradle its unique dimensions exactly. Send an inquiry below to arrange a secure shipment." },
+        { q: "How long does a bespoke commission take?", a: "Standard design reviews are locked within 5 cycles. Forging, thread spinning, and gemstone setting takes 3 to 4 weeks, with fully insured global logistics included." },
+        { q: "Are the gemstones certified?", a: "All diamonds over 0.25ct are accompanied by a GIA certificate, and colored gemstones are certified by regional gemological institutes." }
       ];
       const faqList = document.getElementById("faq-list");
-      faqList.innerHTML = FAQS.map(
-        (f, i) => `
+      faqList.innerHTML = FAQS.map((f, i) => `
         <div class="faq-item" data-i="${i}">
           <button class="faq-q" aria-expanded="false"><span class="box-check" style="margin-right: 12px; font-family: monospace;">[ ]</span> ${f.q} <span class="chev">▶</span></button>
           <div class="faq-a"><div class="faq-a-inner">${f.a}</div></div>
         </div>
-      `,
-      ).join("");
-      faqList.addEventListener("click", (e) => {
+      `).join("");
+      faqList.addEventListener("click", e => {
         const btn = e.target.closest(".faq-q");
         if (!btn) return;
         const item = btn.closest(".faq-item");
         const wasOpen = item.classList.contains("open");
-
-        document.querySelectorAll(".faq-item").forEach((i) => {
+        
+        document.querySelectorAll(".faq-item").forEach(i => {
           i.classList.remove("open");
-          i.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+          i.querySelector(".faq-q").setAttribute("aria-expanded","false");
           i.querySelector(".box-check").textContent = "[ ]";
         });
-
+        
         if (!wasOpen) {
           item.classList.add("open");
-          btn.setAttribute("aria-expanded", "true");
+          btn.setAttribute("aria-expanded","true");
           item.querySelector(".box-check").textContent = "[x]";
         }
       });
 
       document.getElementById("mail-submit")?.addEventListener("click", () => {
-        const name =
-          document.getElementById("contact-name").value || "Valued Patron";
-        alert(
-          `📬 Inquest secured! A representative of Bug's Closet will coordinate with ${name} shortly.`,
-        );
+        const name = document.getElementById("contact-name").value || "Valued Patron";
+        alert(`📬 Inquest secured! A representative of Bug's Closet will coordinate with ${name} shortly.`);
       });
 
       // =========================================================================
@@ -1920,28 +1091,23 @@
       scene.background = new THREE.Color(0xfff0f3); // Blends 100% perfectly with cupcake sprinkle-cream background
 
       // ============== RENDERER ==============
-      const renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: false,
-      });
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setSize(container.clientWidth || 600, container.clientHeight || 600);
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.15;
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
+      // Hide loading indicator once renderer is appended
+      const loadingEl = document.getElementById("canvas-loading");
+      if (loadingEl) loadingEl.style.display = "none";
 
       // ============== CAMERA (Close-up Macro Zoom) ==============
-      const camera = new THREE.PerspectiveCamera(
-        18,
-        container.clientWidth / container.clientHeight || 1,
-        0.1,
-        10,
-      );
+      const camera = new THREE.PerspectiveCamera(18, (container.clientWidth || 600) / (container.clientHeight || 600), 0.1, 10);
       camera.position.set(0, 0.22, 0.85); // Centered close-up of the charms
-
+      
       // ============== ORBIT CONTROLS ==============
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.target.set(0, 0.14, 0.15); // Focusing exactly around the active charms at the bottom curve
@@ -1959,9 +1125,8 @@
         const envScene = new RoomEnvironment();
         envTexture = pmrem.fromScene(envScene, 0.04).texture;
         scene.environment = envTexture;
-        envScene.dispose();
-        pmrem.dispose();
-      } catch (e) {
+        envScene.dispose(); pmrem.dispose();
+      } catch(e) {
         console.warn("HDRI Env fallback:", e);
       }
 
@@ -1970,7 +1135,7 @@
       keyLight.position.set(1.5, 2.5, 2.0);
       keyLight.castShadow = true;
       keyLight.shadow.mapSize.set(2048, 2048);
-      keyLight.shadow.bias = -0.0001;
+      keyLight.shadow.bias = -0.0001; 
       keyLight.shadow.radius = 4;
       keyLight.shadow.camera.near = 0.1;
       keyLight.shadow.camera.far = 5;
@@ -1993,7 +1158,7 @@
         roughness: 0.3,
         metalness: 0.05,
         clearcoat: 0.5,
-        clearcoatRoughness: 0.2,
+        clearcoatRoughness: 0.2
       });
       const floor = new THREE.Mesh(new THREE.PlaneGeometry(3, 3), floorMat);
       floor.rotation.x = -Math.PI / 2;
@@ -2028,93 +1193,20 @@
       // METAL & BASE CONFIGURATIONS
       // =========================================================================
       const baseConfig = {
-        yellow_gold: {
-          type: "chain",
-          color: 0xe6c79c,
-          metalness: 1.0,
-          roughness: 0.08,
-          thin: false,
-        },
-        yellow_gold_thin: {
-          type: "chain",
-          color: 0xe6c79c,
-          metalness: 1.0,
-          roughness: 0.08,
-          thin: true,
-        },
-        white_gold: {
-          type: "chain",
-          color: 0xe8e8e8,
-          metalness: 1.0,
-          roughness: 0.1,
-          thin: false,
-        },
-        rose_gold: {
-          type: "chain",
-          color: 0xe5b2a1,
-          metalness: 1.0,
-          roughness: 0.08,
-          thin: false,
-        },
-        platinum_thin: {
-          type: "chain",
-          color: 0xdcdfe3,
-          metalness: 1.0,
-          roughness: 0.06,
-          thin: true,
-        },
-
-        beads_organic: {
-          type: "beads",
-          color: 0xdfdcd6,
-          roughness: 0.6,
-          metalness: 0.05,
-        },
-        beads_turquoise: {
-          type: "beads",
-          color: 0x2bbab4,
-          roughness: 0.7,
-          metalness: 0.0,
-        },
-
-        rope_homemade: {
-          type: "thread",
-          color: 0xc4b39a,
-          roughness: 0.95,
-          metalness: 0.0,
-          radius: 0.003,
-          twisted: true,
-        },
-        thread_nylon: {
-          type: "thread",
-          color: 0x111111,
-          roughness: 0.85,
-          metalness: 0.1,
-          radius: 0.0018,
-        },
-        thread_crimson: {
-          type: "thread",
-          color: 0xa91e2b,
-          roughness: 0.5,
-          metalness: 0.1,
-          radius: 0.0018,
-          sheen: true,
-        },
-        thread_green: {
-          type: "thread",
-          color: 0x1f3c30,
-          roughness: 0.9,
-          metalness: 0.0,
-          radius: 0.0022,
-        },
-        thread_champagne: {
-          type: "thread",
-          color: 0xdfceb8,
-          roughness: 0.4,
-          metalness: 0.1,
-          radius: 0.0018,
-          sheen: true,
-        },
+        yellow_gold:      { type: "chain", color: 0xe6c79c, metalness: 1.0, roughness: 0.08, thin: false },
+        yellow_gold_thin: { type: "chain", color: 0xe6c79c, metalness: 1.0, roughness: 0.08, thin: true },
+        white_gold:       { type: "chain", color: 0xe8e8e8, metalness: 1.0, roughness: 0.10, thin: false },
+        rose_gold:        { type: "chain", color: 0xe5b2a1, metalness: 1.0, roughness: 0.08, thin: false },
+        platinum_thin:    { type: "chain", color: 0xdcdfe3, metalness: 1.0, roughness: 0.06, thin: true },
+        
+        beads_organic:    { type: "beads", color: 0xdfdcd6, roughness: 0.6, metalness: 0.05 },
+        beads_turquoise:  { type: "beads", color: 0x2bbab4, roughness: 0.7, metalness: 0.00 },
+        
+        rope_homemade:    { type: "thread", color: 0xc4b39a, roughness: 0.95, metalness: 0.0, radius: 0.0030, twisted: true },
+        thread_nylon:     { type: "thread", color: 0x111111, roughness: 0.85, metalness: 0.1, radius: 0.0018 },
+        thread_crimson:   { type: "thread", color: 0xa91e2b, roughness: 0.50, metalness: 0.1, radius: 0.0018, sheen: true },
+        thread_green:     { type: "thread", color: 0x1f3c30, roughness: 0.90, metalness: 0.0, radius: 0.0022 },
+        thread_champagne: { type: "thread", color: 0xdfceb8, roughness: 0.40, metalness: 0.1, radius: 0.0018, sheen: true }
       };
 
       function createTwistedRopeTexture() {
@@ -2122,7 +1214,7 @@
         canvas.width = 128;
         canvas.height = 128;
         const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#888888";
+        ctx.fillStyle = "#888888"; 
         ctx.fillRect(0, 0, 128, 128);
         ctx.strokeStyle = "#ffffff";
         ctx.lineWidth = 6;
@@ -2144,86 +1236,81 @@
       // CHAIN/BASE REBUILD ENGINE
       // =========================================================================
       function rebuildChainMesh() {
-        while (chainGroup.children.length > 0) {
+        while(chainGroup.children.length > 0) {
           chainGroup.remove(chainGroup.children[0]);
         }
-
+        
         const conf = baseConfig[selectedBase];
         if (!conf) return;
-
+        
         const L = ropeCurve.getLength();
-
+        
         if (conf.type === "chain") {
           const thin = conf.thin;
-          const linkGeo = thin
-            ? new THREE.TorusGeometry(0.0038, 0.001, 6, 12)
+          const linkGeo = thin 
+            ? new THREE.TorusGeometry(0.0038, 0.0010, 6, 12) 
             : new THREE.TorusGeometry(0.0055, 0.0015, 8, 16);
           linkGeo.scale(1.0, 1.35, 1.0);
-
+          
           const spacing = thin ? 0.0044 : 0.0076;
           const numLinks = Math.floor(L / spacing);
-
+          
           const metalMat = new THREE.MeshPhysicalMaterial({
             color: conf.color,
             metalness: 1.0,
             roughness: conf.roughness,
             clearcoat: 1.0,
-            clearcoatRoughness: 0.02,
+            clearcoatRoughness: 0.02
           });
-
+          
           for (let i = 0; i < numLinks; i++) {
             const t = i / numLinks;
             const pos = ropeCurve.getPointAt(t);
             const tangent = ropeCurve.getTangentAt(t);
-
+            
             const link = new THREE.Mesh(linkGeo, metalMat);
             link.position.copy(pos);
-
+            
             const up = new THREE.Vector3(0, 1, 0);
             link.quaternion.setFromUnitVectors(up, tangent);
-            link.rotateY(((i % 2) * Math.PI) / 2);
-
+            link.rotateY((i % 2) * Math.PI / 2);
+            
             link.castShadow = true;
             link.receiveShadow = true;
             chainGroup.add(link);
           }
+          
         } else if (conf.type === "beads") {
           const spacing = 0.0078;
           const numBeads = Math.floor(L / spacing);
           const beadGeo = new THREE.SphereGeometry(0.0038, 12, 12);
-
+          
           let beadMaterials = [];
           if (selectedBase === "beads_organic") {
             const baseColors = [0xdfdcd6, 0xe4e2dd, 0xd4cfc7, 0xeae8e4];
-            baseColors.forEach((c) => {
-              beadMaterials.push(
-                new THREE.MeshPhysicalMaterial({
-                  color: c,
-                  roughness: conf.roughness,
-                  metalness: conf.metalness,
-                }),
-              );
+            baseColors.forEach(c => {
+              beadMaterials.push(new THREE.MeshPhysicalMaterial({
+                color: c,
+                roughness: conf.roughness,
+                metalness: conf.metalness
+              }));
             });
           } else {
-            const baseColors = [
-              0x2bbab4, 0x3abfb8, 0x22a69f, 0x4cc9c0, 0x289c96,
-            ];
-            baseColors.forEach((c) => {
-              beadMaterials.push(
-                new THREE.MeshPhysicalMaterial({
-                  color: c,
-                  roughness: conf.roughness,
-                  metalness: conf.metalness,
-                  clearcoat: 0.2,
-                }),
-              );
+            const baseColors = [0x2bbab4, 0x3abfb8, 0x22a69f, 0x4cc9c0, 0x289c96];
+            baseColors.forEach(c => {
+              beadMaterials.push(new THREE.MeshPhysicalMaterial({
+                color: c,
+                roughness: conf.roughness,
+                metalness: conf.metalness,
+                clearcoat: 0.2
+              }));
             });
           }
-
+          
           for (let i = 0; i < numBeads; i++) {
             const t = i / numBeads;
             const pos = ropeCurve.getPointAt(t);
-
+            
             const beadMat = beadMaterials[i % beadMaterials.length];
             const bead = new THREE.Mesh(beadGeo, beadMat);
             bead.position.copy(pos);
@@ -2231,20 +1318,15 @@
             bead.receiveShadow = true;
             chainGroup.add(bead);
           }
+          
         } else if (conf.type === "thread") {
-          const threadGeo = new THREE.TubeGeometry(
-            ropeCurve,
-            120,
-            conf.radius,
-            8,
-            true,
-          );
+          const threadGeo = new THREE.TubeGeometry(ropeCurve, 120, conf.radius, 8, true);
           const matOptions = {
             color: conf.color,
             roughness: conf.roughness,
-            metalness: conf.metalness,
+            metalness: conf.metalness
           };
-
+          
           if (conf.twisted) {
             matOptions.bumpMap = ropeBumpMap;
             matOptions.bumpScale = 0.0006;
@@ -2253,7 +1335,7 @@
             matOptions.sheen = 1.0;
             matOptions.sheenColor = new THREE.Color(0xffffff);
           }
-
+          
           const threadMat = new THREE.MeshPhysicalMaterial(matOptions);
           const threadMesh = new THREE.Mesh(threadGeo, threadMat);
           threadMesh.castShadow = true;
@@ -2267,86 +1349,70 @@
       // =========================================================================
       function createBespokeCharm(charmType, baseType) {
         const group = new THREE.Group();
-
+        
         let metalType = "yellow_gold";
         if (baseConfig[baseType] && baseConfig[baseType].type === "chain") {
           metalType = baseType;
         }
-
+        
         const conf = baseConfig[metalType];
         const settingMat = new THREE.MeshPhysicalMaterial({
           color: conf ? conf.color : 0xe6c79c,
           metalness: 1.0,
           roughness: conf ? conf.roughness : 0.08,
           clearcoat: 1.0,
-          clearcoatRoughness: 0.02,
+          clearcoatRoughness: 0.02
         });
-
+        
         if (charmType === "pearl_baroque") {
           const pearlGeo = new THREE.SphereGeometry(0.015, 16, 16);
-          pearlGeo.scale(1.0, 1.35, 1.0);
+          pearlGeo.scale(1.0, 1.35, 1.0); 
           const posAttr = pearlGeo.attributes.position;
           for (let i = 0; i < posAttr.count; i++) {
             const vx = posAttr.getX(i);
             const vy = posAttr.getY(i);
             const vz = posAttr.getZ(i);
             const angle = Math.atan2(vz, vx);
-            const ripple =
-              1.0 +
-              Math.sin(vy * 160 + angle * 2) * 0.12 +
-              Math.cos(vy * 80) * 0.05;
+            const ripple = 1.0 + Math.sin(vy * 160 + angle * 2) * 0.12 + Math.cos(vy * 80) * 0.05;
             posAttr.setXYZ(i, vx * ripple, vy * ripple, vz * ripple);
           }
           pearlGeo.computeVertexNormals();
-
+          
           const pearlMat = new THREE.MeshPhysicalMaterial({
             color: 0xfbf9f5,
             roughness: 0.12,
             metalness: 0.05,
             clearcoat: 1.0,
             clearcoatRoughness: 0.05,
-            transmission: 0.2,
+            transmission: 0.2, 
             thickness: 0.02,
             sheen: 1.0,
-            sheenColor: 0xffeef5,
-            specularIntensity: 1.0,
+            sheenColor: 0xffeef5, 
+            specularIntensity: 1.0
           });
           const pearlMesh = new THREE.Mesh(pearlGeo, pearlMat);
           pearlMesh.castShadow = true;
           pearlMesh.receiveShadow = true;
           group.add(pearlMesh);
-
-          const tunnelGeo = new THREE.CylinderGeometry(
-            0.0028,
-            0.0028,
-            0.044,
-            8,
-          );
+          
+          const tunnelGeo = new THREE.CylinderGeometry(0.0028, 0.0028, 0.044, 8);
           tunnelGeo.rotateX(Math.PI / 2);
           const tunnelMat = new THREE.MeshBasicMaterial({ color: 0x1a1612 });
           const tunnel = new THREE.Mesh(tunnelGeo, tunnelMat);
           group.add(tunnel);
+          
         } else if (charmType === "pave_bead") {
           const coreGeo = new THREE.SphereGeometry(0.0125, 10, 10);
-          const platMat = new THREE.MeshPhysicalMaterial({
-            color: 0xdcdfe3,
-            metalness: 1.0,
-            roughness: 0.08,
-          });
+          const platMat = new THREE.MeshPhysicalMaterial({ color: 0xdcdfe3, metalness: 1.0, roughness: 0.08 });
           const coreMesh = new THREE.Mesh(coreGeo, platMat);
           group.add(coreMesh);
-
+          
           const gemMat = new THREE.MeshPhysicalMaterial({
-            color: 0xffffff,
-            roughness: 0.0,
-            metalness: 0.0,
-            transmission: 0.95,
-            ior: 2.42,
-            clearcoat: 1.0,
-            flatShading: true,
+            color: 0xffffff, roughness: 0.0, metalness: 0.0, transmission: 0.95,
+            ior: 2.42, clearcoat: 1.0, flatShading: true
           });
-          const gemGeo = new THREE.OctahedronGeometry(0.0028, 0);
-
+          const gemGeo = new THREE.OctahedronGeometry(0.0028, 0); 
+          
           const posAttr = coreGeo.attributes.position;
           const normalAttr = coreGeo.attributes.normal;
           for (let i = 0; i < posAttr.count; i += 2) {
@@ -2356,86 +1422,70 @@
             const nx = normalAttr.getX(i);
             const ny = normalAttr.getY(i);
             const nz = normalAttr.getZ(i);
-
+            
             const gem = new THREE.Mesh(gemGeo, gemMat);
-            gem.position.set(
-              vx + nx * 0.0006,
-              vy + ny * 0.0006,
-              vz + nz * 0.0006,
-            );
-            gem.quaternion.setFromUnitVectors(
-              new THREE.Vector3(0, 1, 0),
-              new THREE.Vector3(nx, ny, nz),
-            );
+            gem.position.set(vx + nx * 0.0006, vy + ny * 0.0006, vz + nz * 0.0006);
+            gem.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(nx, ny, nz));
             group.add(gem);
           }
-
-          const tunnelGeo = new THREE.CylinderGeometry(
-            0.0028,
-            0.0028,
-            0.028,
-            8,
-          );
+          
+          const tunnelGeo = new THREE.CylinderGeometry(0.0028, 0.0028, 0.028, 8);
           tunnelGeo.rotateX(Math.PI / 2);
           const tunnelMat = new THREE.MeshBasicMaterial({ color: 0x111111 });
           group.add(new THREE.Mesh(tunnelGeo, tunnelMat));
+          
         } else if (charmType === "amphora_urn") {
           const pts = [
-            new THREE.Vector2(0.0005, -0.018),
-            new THREE.Vector2(0.005, -0.018),
-            new THREE.Vector2(0.003, -0.013),
-            new THREE.Vector2(0.011, -0.004),
+            new THREE.Vector2(0.0005, -0.018), 
+            new THREE.Vector2(0.005, -0.018),  
+            new THREE.Vector2(0.003, -0.013),  
+            new THREE.Vector2(0.011, -0.004),  
             new THREE.Vector2(0.011, 0.004),
-            new THREE.Vector2(0.005, 0.011),
-            new THREE.Vector2(0.0038, 0.015),
-            new THREE.Vector2(0.0068, 0.018),
+            new THREE.Vector2(0.005, 0.011),   
+            new THREE.Vector2(0.0038, 0.015),  
+            new THREE.Vector2(0.0068, 0.018)   
           ];
           const urnGeo = new THREE.LatheGeometry(pts, 16);
           const urnMesh = new THREE.Mesh(urnGeo, settingMat);
           urnMesh.castShadow = true;
           urnMesh.receiveShadow = true;
           group.add(urnMesh);
-
-          const handleGeo = new THREE.TorusGeometry(
-            0.006,
-            0.0014,
-            6,
-            12,
-            Math.PI * 0.95,
-          );
+          
+          const handleGeo = new THREE.TorusGeometry(0.006, 0.0014, 6, 12, Math.PI * 0.95);
           const handleL = new THREE.Mesh(handleGeo, settingMat);
           handleL.position.set(-0.008, 0.003, 0);
           handleL.rotation.z = Math.PI / 2;
           group.add(handleL);
-
+          
           const handleR = new THREE.Mesh(handleGeo, settingMat);
           handleR.position.set(0.008, 0.003, 0);
           handleR.rotation.z = -Math.PI / 2;
           group.add(handleR);
-
+          
           const loopGeo = new THREE.TorusGeometry(0.005, 0.0014, 6, 12);
           const loop = new THREE.Mesh(loopGeo, settingMat);
           loop.position.y = 0.022;
           loop.rotation.y = Math.PI / 2;
           loop.castShadow = true;
           group.add(loop);
+          
         } else if (charmType === "filigree_cage") {
           const ringGeo = new THREE.TorusGeometry(0.014, 0.0014, 6, 24);
           ringGeo.rotateX(Math.PI / 2);
-
+          
           const ringM = new THREE.Mesh(ringGeo, settingMat);
           group.add(ringM);
-
+          
           const ringT = new THREE.Mesh(ringGeo, settingMat);
           ringT.position.y = 0.007;
           ringT.scale.set(0.86, 1.0, 0.86);
           group.add(ringT);
-
+          
           const ringB = new THREE.Mesh(ringGeo, settingMat);
           ringB.position.y = -0.007;
           ringB.scale.set(0.86, 1.0, 0.86);
           group.add(ringB);
-
+          
           const ribGeo = new THREE.TorusGeometry(0.014, 0.0014, 6, 24, Math.PI);
           ribGeo.rotateY(Math.PI / 2);
           for (let i = 0; i < 8; i++) {
@@ -2443,82 +1493,61 @@
             rib.rotation.y = (i * Math.PI) / 4;
             group.add(rib);
           }
-
+          
           const rubyMat = new THREE.MeshPhysicalMaterial({
-            color: 0xd91e36,
-            roughness: 0.05,
-            metalness: 0.0,
-            transmission: 0.9,
-            thickness: 0.04,
-            ior: 1.77,
-            clearcoat: 1.0,
-            flatShading: true,
+            color: 0xd91e36, roughness: 0.05, metalness: 0.0, transmission: 0.9,
+            thickness: 0.04, ior: 1.77, clearcoat: 1.0, flatShading: true
           });
-          const rubyMesh = new THREE.Mesh(
-            new THREE.OctahedronGeometry(0.0068, 0),
-            rubyMat,
-          );
-          rubyMesh.position.y = -0.004;
+          const rubyMesh = new THREE.Mesh(new THREE.OctahedronGeometry(0.0068, 0), rubyMat);
+          rubyMesh.position.y = -0.004; 
           group.add(rubyMesh);
-
+          
           const loopGeo = new THREE.TorusGeometry(0.005, 0.0014, 6, 12);
           const loop = new THREE.Mesh(loopGeo, settingMat);
           loop.position.y = 0.016;
           loop.rotation.y = Math.PI / 2;
           loop.castShadow = true;
           group.add(loop);
+          
         } else if (charmType === "astrolabe_slide") {
           const astrolabe = new THREE.Group();
-          const baseDiscGeo = new THREE.CylinderGeometry(
-            0.018,
-            0.018,
-            0.002,
-            32,
-          );
+          const baseDiscGeo = new THREE.CylinderGeometry(0.018, 0.018, 0.002, 32);
           baseDiscGeo.rotateX(Math.PI / 2);
           const baseDisc = new THREE.Mesh(baseDiscGeo, settingMat);
           baseDisc.castShadow = true;
           astrolabe.add(baseDisc);
-
-          const lineRing = new THREE.Mesh(
-            new THREE.TorusGeometry(0.013, 0.0008, 4, 24),
-            settingMat,
-          );
+          
+          const lineRing = new THREE.Mesh(new THREE.TorusGeometry(0.013, 0.0008, 4, 24), settingMat);
           lineRing.position.z = 0.0012;
           astrolabe.add(lineRing);
-
-          const lineRingInner = new THREE.Mesh(
-            new THREE.TorusGeometry(0.008, 0.0008, 4, 24),
-            settingMat,
-          );
+          
+          const lineRingInner = new THREE.Mesh(new THREE.TorusGeometry(0.008, 0.0008, 4, 24), settingMat);
           lineRingInner.position.z = 0.0012;
           astrolabe.add(lineRingInner);
-
-          const star = new THREE.Mesh(
-            new THREE.SphereGeometry(0.0025, 4, 4),
-            settingMat,
-          );
+          
+          const star = new THREE.Mesh(new THREE.SphereGeometry(0.0025, 4, 4), settingMat);
           star.position.set(0, 0, 0.0016);
           astrolabe.add(star);
-
+          
           const barGeo = new THREE.BoxGeometry(0.026, 0.0008, 0.0008);
           const barH = new THREE.Mesh(barGeo, settingMat);
           barH.position.z = 0.0012;
           astrolabe.add(barH);
-
+          
           const barV = new THREE.Mesh(barGeo, settingMat);
           barV.rotation.z = Math.PI / 2;
           barV.position.z = 0.0012;
           astrolabe.add(barV);
-
+          
           group.add(astrolabe);
-
+          
           const loopGeo = new THREE.TorusGeometry(0.005, 0.0014, 6, 12);
           const loop = new THREE.Mesh(loopGeo, settingMat);
-          loop.position.y = 0.02;
+          loop.position.y = 0.020;
           loop.rotation.y = Math.PI / 2;
           loop.castShadow = true;
           group.add(loop);
+          
         } else if (charmType === "gold_nugget") {
           const nuggetGeo = new THREE.DodecahedronGeometry(0.014, 1);
           const posAttr = nuggetGeo.attributes.position;
@@ -2530,39 +1559,24 @@
             posAttr.setXYZ(i, vx * f, vy * f, vz * f);
           }
           nuggetGeo.computeVertexNormals();
-
+          
           const goldMat = new THREE.MeshPhysicalMaterial({
-            color: 0xffd700,
-            metalness: 1.0,
-            roughness: 0.38,
-            clearcoat: 0.1,
-            flatShading: true,
+            color: 0xffd700, metalness: 1.0, roughness: 0.38, clearcoat: 0.1, flatShading: true
           });
           const nuggetMesh = new THREE.Mesh(nuggetGeo, goldMat);
           nuggetMesh.castShadow = true;
           nuggetMesh.receiveShadow = true;
           group.add(nuggetMesh);
-
-          const tunnelGeo = new THREE.CylinderGeometry(
-            0.0028,
-            0.0028,
-            0.028,
-            8,
-          );
+          
+          const tunnelGeo = new THREE.CylinderGeometry(0.0028, 0.0028, 0.028, 8);
           tunnelGeo.rotateX(Math.PI / 2);
           const tunnelMat = new THREE.MeshBasicMaterial({ color: 0x111111 });
           group.add(new THREE.Mesh(tunnelGeo, tunnelMat));
+          
         } else if (charmType === "talon_emerald") {
           const gemMat = new THREE.MeshPhysicalMaterial({
-            color: 0x059669,
-            roughness: 0.0,
-            metalness: 0.0,
-            transmission: 0.95,
-            thickness: 0.05,
-            ior: 1.59,
-            clearcoat: 1.0,
-            flatShading: true,
-            side: THREE.DoubleSide,
+            color: 0x059669, roughness: 0.0, metalness: 0.0, transmission: 0.95,
+            thickness: 0.05, ior: 1.59, clearcoat: 1.0, flatShading: true, side: THREE.DoubleSide
           });
           const pts = [
             new THREE.Vector2(0.001, -0.015),
@@ -2571,49 +1585,38 @@
             new THREE.Vector2(0.016, 0.002),
             new THREE.Vector2(0.013, 0.008),
             new THREE.Vector2(0.008, 0.012),
-            new THREE.Vector2(0, 0.012),
+            new THREE.Vector2(0, 0.012)
           ];
           const gemGeo = new THREE.LatheGeometry(pts, 8);
           gemGeo.scale(1.4, 1.0, 0.95);
           const gemMesh = new THREE.Mesh(gemGeo, gemMat);
           gemMesh.castShadow = true;
           group.add(gemMesh);
-
+          
           const talonGeo = new THREE.CylinderGeometry(0.0018, 0.0026, 0.024, 6);
-          talonGeo.translate(0, 0.012, 0);
-          const angles = [
-            Math.PI / 4,
-            (3 * Math.PI) / 4,
-            (5 * Math.PI) / 4,
-            (7 * Math.PI) / 4,
-          ];
-          angles.forEach((angle) => {
+          talonGeo.translate(0, 0.012, 0); 
+          const angles = [Math.PI / 4, 3 * Math.PI / 4, 5 * Math.PI / 4, 7 * Math.PI / 4];
+          angles.forEach(angle => {
             const talon = new THREE.Mesh(talonGeo, settingMat);
-            talon.position.set(
-              Math.cos(angle) * 0.015,
-              -0.011,
-              Math.sin(angle) * 0.015,
-            );
-            talon.rotation.z = -Math.cos(angle) * 0.28;
+            talon.position.set(Math.cos(angle) * 0.015, -0.011, Math.sin(angle) * 0.015);
+            talon.rotation.z = -Math.cos(angle) * 0.28; 
             talon.rotation.x = Math.sin(angle) * 0.28;
             talon.castShadow = true;
             group.add(talon);
           });
-
-          const basket = new THREE.Mesh(
-            new THREE.TorusGeometry(0.012, 0.002, 6, 12),
-            settingMat,
-          );
+          
+          const basket = new THREE.Mesh(new THREE.TorusGeometry(0.012, 0.002, 6, 12), settingMat);
           basket.position.y = -0.006;
           basket.rotation.x = Math.PI / 2;
           group.add(basket);
-
+          
           const loopGeo = new THREE.TorusGeometry(0.005, 0.0014, 6, 12);
           const loop = new THREE.Mesh(loopGeo, settingMat);
           loop.position.y = 0.018;
           loop.rotation.y = Math.PI / 2;
           loop.castShadow = true;
           group.add(loop);
+          
         } else if (charmType === "lava_bead") {
           const lavaGeo = new THREE.SphereGeometry(0.016, 12, 12);
           const posAttr = lavaGeo.attributes.position;
@@ -2625,27 +1628,20 @@
             posAttr.setXYZ(i, vx * f, vy * f, vz * f);
           }
           lavaGeo.computeVertexNormals();
-
+          
           const lavaMat = new THREE.MeshPhysicalMaterial({
-            color: 0x2c2c2c,
-            roughness: 0.98,
-            metalness: 0.05,
-            flatShading: true,
+            color: 0x2c2c2c, roughness: 0.98, metalness: 0.05, flatShading: true
           });
           const lavaMesh = new THREE.Mesh(lavaGeo, lavaMat);
           lavaMesh.castShadow = true;
           lavaMesh.receiveShadow = true;
           group.add(lavaMesh);
-
-          const tunnelGeo = new THREE.CylinderGeometry(
-            0.0028,
-            0.0028,
-            0.034,
-            8,
-          );
+          
+          const tunnelGeo = new THREE.CylinderGeometry(0.0028, 0.0028, 0.034, 8);
           tunnelGeo.rotateX(Math.PI / 2);
           const tunnelMat = new THREE.MeshBasicMaterial({ color: 0x0a0a0a });
           group.add(new THREE.Mesh(tunnelGeo, tunnelMat));
+          
         } else if (charmType === "turquoise_disc") {
           const discGeo = new THREE.SphereGeometry(0.022, 12, 12);
           discGeo.scale(1.2, 0.45, 1.2);
@@ -2658,38 +1654,31 @@
             posAttr.setXYZ(i, vx * f, vy * f, vz * f);
           }
           discGeo.computeVertexNormals();
-
+          
           const discMat = new THREE.MeshPhysicalMaterial({
-            color: 0x3abfb8,
-            roughness: 0.7,
-            metalness: 0.05,
-            clearcoat: 0.2,
+            color: 0x3abfb8, roughness: 0.70, metalness: 0.05, clearcoat: 0.2
           });
           const discMesh = new THREE.Mesh(discGeo, discMat);
           discMesh.castShadow = true;
           discMesh.receiveShadow = true;
           group.add(discMesh);
-
-          const tunnelGeo = new THREE.CylinderGeometry(
-            0.0028,
-            0.0028,
-            0.016,
-            8,
-          );
+          
+          const tunnelGeo = new THREE.CylinderGeometry(0.0028, 0.0028, 0.016, 8);
           tunnelGeo.rotateX(Math.PI / 2);
           const tunnelMat = new THREE.MeshBasicMaterial({ color: 0x110800 });
           group.add(new THREE.Mesh(tunnelGeo, tunnelMat));
+          
         } else if (charmType === "hammered_drop") {
           const pts = [
             new THREE.Vector2(0.0005, -0.024),
             new THREE.Vector2(0.0024, -0.015),
             new THREE.Vector2(0.0036, 0.0),
             new THREE.Vector2(0.002, 0.012),
-            new THREE.Vector2(0.001, 0.018),
+            new THREE.Vector2(0.001, 0.018)
           ];
           const tagGeo = new THREE.LatheGeometry(pts, 8);
-          tagGeo.scale(1.5, 1.0, 0.35);
-
+          tagGeo.scale(1.5, 1.0, 0.35); 
+          
           const posAttr = tagGeo.attributes.position;
           for (let i = 0; i < posAttr.count; i++) {
             const vx = posAttr.getX(i);
@@ -2699,488 +1688,89 @@
             posAttr.setXYZ(i, vx * f, vy * f, vz * f);
           }
           tagGeo.computeVertexNormals();
-
+          
           const tagMat = new THREE.MeshPhysicalMaterial({
-            color: 0xb57c50,
-            metalness: 1.0,
-            roughness: 0.28,
-            clearcoat: 0.2,
+            color: 0xb57c50, metalness: 1.0, roughness: 0.28, clearcoat: 0.2
           });
           const tagMesh = new THREE.Mesh(tagGeo, tagMat);
           tagMesh.castShadow = true;
           group.add(tagMesh);
-
+          
           const loopGeo = new THREE.TorusGeometry(0.005, 0.0014, 6, 12);
           const loop = new THREE.Mesh(loopGeo, tagMat);
           loop.position.y = 0.024;
           loop.rotation.y = Math.PI / 2;
           loop.castShadow = true;
           group.add(loop);
-        } else if (charmType === "moonstone_cab") {
-          // Moonstone cabochon — smooth oval dome with iridescent sheen
-          const cabGeo = new THREE.SphereGeometry(0.018, 20, 20);
-          cabGeo.scale(1.15, 0.55, 1.0);
-
-          const cabMat = new THREE.MeshPhysicalMaterial({
-            color: 0xe8e4f0,
-            roughness: 0.08,
-            metalness: 0.02,
-            clearcoat: 1.0,
-            clearcoatRoughness: 0.03,
-            transmission: 0.35,
-            thickness: 0.015,
-            ior: 1.54,
-            sheen: 1.0,
-            sheenColor: new THREE.Color(0xc8b8e8),
-            specularIntensity: 1.0,
-          });
-          const cabMesh = new THREE.Mesh(cabGeo, cabMat);
-          cabMesh.castShadow = true;
-          cabMesh.receiveShadow = true;
-          group.add(cabMesh);
-
-          // Bezel setting ring
-          const bezelGeo = new THREE.TorusGeometry(0.019, 0.0018, 6, 24);
-          bezelGeo.rotateX(Math.PI / 2);
-          const bezelMesh = new THREE.Mesh(bezelGeo, settingMat);
-          bezelMesh.position.y = -0.001;
-          group.add(bezelMesh);
-
-          // Bail loop
-          const loopGeo = new THREE.TorusGeometry(0.005, 0.0014, 6, 12);
-          const loop = new THREE.Mesh(loopGeo, settingMat);
-          loop.position.y = 0.014;
-          loop.rotation.y = Math.PI / 2;
-          loop.castShadow = true;
-          group.add(loop);
-        } else if (charmType === "obsidian_arrow") {
-          // Obsidian arrowhead — sharp volcanic glass triangle
-          const arrowShape = new THREE.Shape();
-          arrowShape.moveTo(0, 0.026);
-          arrowShape.lineTo(-0.013, -0.016);
-          arrowShape.lineTo(-0.006, -0.01);
-          arrowShape.lineTo(0, -0.018);
-          arrowShape.lineTo(0.006, -0.01);
-          arrowShape.lineTo(0.013, -0.016);
-          arrowShape.lineTo(0, 0.026);
-
-          const extrudeSettings = {
-            depth: 0.003,
-            bevelEnabled: true,
-            bevelThickness: 0.0008,
-            bevelSize: 0.0008,
-            bevelSegments: 2,
-          };
-          const arrowGeo = new THREE.ExtrudeGeometry(
-            arrowShape,
-            extrudeSettings,
-          );
-          arrowGeo.center();
-
-          const obsMat = new THREE.MeshPhysicalMaterial({
-            color: 0x1a1a1f,
-            roughness: 0.55,
-            metalness: 0.05,
-            flatShading: true,
-            clearcoat: 0.3,
-            clearcoatRoughness: 0.4,
-          });
-          const arrowMesh = new THREE.Mesh(arrowGeo, obsMat);
-          arrowMesh.castShadow = true;
-          arrowMesh.receiveShadow = true;
-          group.add(arrowMesh);
-
-          // Notch marks — small indentations via tiny dark spheres
-          const notchMat = new THREE.MeshBasicMaterial({ color: 0x0d0d0f });
-          for (let i = 0; i < 3; i++) {
-            const notch = new THREE.Mesh(
-              new THREE.SphereGeometry(0.0012, 4, 4),
-              notchMat,
-            );
-            notch.position.set(-0.008 + i * 0.008, -0.012, 0.002);
-            group.add(notch);
-          }
-
-          // Thread tunnel
-          const tunnelGeo = new THREE.CylinderGeometry(0.0028, 0.0028, 0.01, 8);
-          tunnelGeo.rotateX(Math.PI / 2);
-          const tunnelMat = new THREE.MeshBasicMaterial({ color: 0x0a0a0a });
-          const tunnel = new THREE.Mesh(tunnelGeo, tunnelMat);
-          tunnel.position.y = 0.02;
-          group.add(tunnel);
-        } else if (charmType === "sun_medallion") {
-          // Sun medallion — hammered brass disc with radiating spike rays
-          const sunGroup = new THREE.Group();
-
-          const brassMat = new THREE.MeshPhysicalMaterial({
-            color: 0xd4a843,
-            metalness: 1.0,
-            roughness: 0.35,
-            clearcoat: 0.15,
-          });
-
-          // Central disc
-          const discGeo = new THREE.CylinderGeometry(0.014, 0.014, 0.002, 24);
-          discGeo.rotateX(Math.PI / 2);
-          const disc = new THREE.Mesh(discGeo, brassMat);
-          disc.castShadow = true;
-          sunGroup.add(disc);
-
-          // Inner ring detail
-          const innerRing = new THREE.Mesh(
-            new THREE.TorusGeometry(0.009, 0.0007, 4, 20),
-            brassMat,
-          );
-          innerRing.position.z = 0.0012;
-          sunGroup.add(innerRing);
-
-          // Central dot
-          const centerDot = new THREE.Mesh(
-            new THREE.SphereGeometry(0.003, 8, 8),
-            brassMat,
-          );
-          centerDot.position.z = 0.0012;
-          sunGroup.add(centerDot);
-
-          // Radiating spike rays
-          const numRays = 12;
-          for (let i = 0; i < numRays; i++) {
-            const angle = (i / numRays) * Math.PI * 2;
-            const rayLen = i % 2 === 0 ? 0.008 : 0.005;
-            const rayGeo = new THREE.ConeGeometry(0.0012, rayLen, 4);
-            rayGeo.rotateZ(-Math.PI / 2);
-            const ray = new THREE.Mesh(rayGeo, brassMat);
-            const r = 0.014 + rayLen / 2;
-            ray.position.set(Math.cos(angle) * r, Math.sin(angle) * r, 0.001);
-            ray.rotation.z = angle - Math.PI / 2;
-            ray.castShadow = true;
-            sunGroup.add(ray);
-          }
-
-          group.add(sunGroup);
-
-          // Bail loop
-          const loopGeo = new THREE.TorusGeometry(0.005, 0.0014, 6, 12);
-          const loop = new THREE.Mesh(loopGeo, brassMat);
-          loop.position.y = 0.022;
-          loop.rotation.y = Math.PI / 2;
-          loop.castShadow = true;
-          group.add(loop);
-        } else if (charmType === "bone_rune") {
-          // Bone rune — rectangular bone/ivory tag with runic groove
-          const boneShape = new THREE.Shape();
-          const w = 0.009,
-            h = 0.022,
-            r = 0.002;
-          boneShape.moveTo(-w + r, -h);
-          boneShape.lineTo(w - r, -h);
-          boneShape.quadraticCurveTo(w, -h, w, -h + r);
-          boneShape.lineTo(w, h - r);
-          boneShape.quadraticCurveTo(w, h, w - r, h);
-          boneShape.lineTo(-w + r, h);
-          boneShape.quadraticCurveTo(-w, h, -w, h - r);
-          boneShape.lineTo(-w, -h + r);
-          boneShape.quadraticCurveTo(-w, -h, -w + r, -h);
-
-          const boneExtSettings = {
-            depth: 0.004,
-            bevelEnabled: true,
-            bevelThickness: 0.0006,
-            bevelSize: 0.0006,
-            bevelSegments: 2,
-          };
-          const boneGeo = new THREE.ExtrudeGeometry(boneShape, boneExtSettings);
-          boneGeo.center();
-
-          const boneMat = new THREE.MeshPhysicalMaterial({
-            color: 0xf5f0e8,
-            roughness: 0.85,
-            metalness: 0.0,
-            clearcoat: 0.1,
-          });
-          const boneMesh = new THREE.Mesh(boneGeo, boneMat);
-          boneMesh.castShadow = true;
-          boneMesh.receiveShadow = true;
-          group.add(boneMesh);
-
-          // Runic grooves — dark inset lines forming a simple rune (Algiz / protection)
-          const grooveMat = new THREE.MeshBasicMaterial({ color: 0x8a7e6e });
-          // Vertical stem
-          const stem = new THREE.Mesh(
-            new THREE.BoxGeometry(0.001, 0.02, 0.001),
-            grooveMat,
-          );
-          stem.position.z = 0.0028;
-          group.add(stem);
-          // Left branch
-          const branchL = new THREE.Mesh(
-            new THREE.BoxGeometry(0.008, 0.001, 0.001),
-            grooveMat,
-          );
-          branchL.position.set(-0.003, 0.006, 0.0028);
-          branchL.rotation.z = 0.5;
-          group.add(branchL);
-          // Right branch
-          const branchR = new THREE.Mesh(
-            new THREE.BoxGeometry(0.008, 0.001, 0.001),
-            grooveMat,
-          );
-          branchR.position.set(0.003, 0.006, 0.0028);
-          branchR.rotation.z = -0.5;
-          group.add(branchR);
-
-          // Thread tunnel at top
-          const tunnelGeo = new THREE.CylinderGeometry(
-            0.0022,
-            0.0022,
-            0.006,
-            8,
-          );
-          tunnelGeo.rotateX(Math.PI / 2);
-          const tunnelMat = new THREE.MeshBasicMaterial({ color: 0x6b6050 });
-          const tunnel = new THREE.Mesh(tunnelGeo, tunnelMat);
-          tunnel.position.y = 0.019;
-          group.add(tunnel);
-        } else if (charmType === "pyrite_cluster") {
-          // Pyrite cluster — small cubic metallic crystals
-          const pyriteMat = new THREE.MeshPhysicalMaterial({
-            color: 0xc9b037,
-            metalness: 0.95,
-            roughness: 0.25,
-            flatShading: true,
-            clearcoat: 0.1,
-          });
-
-          // Base lump
-          const baseGeo = new THREE.DodecahedronGeometry(0.008, 0);
-          const basePosAttr = baseGeo.attributes.position;
-          for (let i = 0; i < basePosAttr.count; i++) {
-            const f = 1.0 + (Math.random() - 0.5) * 0.25;
-            basePosAttr.setX(i, basePosAttr.getX(i) * f);
-            basePosAttr.setY(i, basePosAttr.getY(i) * f * 0.6);
-            basePosAttr.setZ(i, basePosAttr.getZ(i) * f);
-          }
-          baseGeo.computeVertexNormals();
-          const baseMesh = new THREE.Mesh(baseGeo, pyriteMat);
-          baseMesh.castShadow = true;
-          baseMesh.receiveShadow = true;
-          group.add(baseMesh);
-
-          // Cubic crystal protrusions
-          const cubeSizes = [0.004, 0.0035, 0.003, 0.0028, 0.0025];
-          const cubePositions = [
-            [0.006, 0.005, 0.002],
-            [-0.004, 0.006, -0.003],
-            [0.002, 0.004, 0.005],
-            [-0.005, 0.003, 0.004],
-            [0.0, 0.007, -0.001],
-          ];
-          const cubeRotations = [
-            [0.3, 0.5, 0.1],
-            [-0.2, 0.8, 0.3],
-            [0.6, 0.1, -0.4],
-            [0.1, -0.3, 0.7],
-            [-0.5, 0.4, 0.2],
-          ];
-
-          for (let i = 0; i < cubeSizes.length; i++) {
-            const cubeGeo = new THREE.BoxGeometry(
-              cubeSizes[i],
-              cubeSizes[i],
-              cubeSizes[i],
-            );
-            const cube = new THREE.Mesh(cubeGeo, pyriteMat);
-            cube.position.set(...cubePositions[i]);
-            cube.rotation.set(...cubeRotations[i]);
-            cube.castShadow = true;
-            group.add(cube);
-          }
-
-          // Thread tunnel
-          const tunnelGeo = new THREE.CylinderGeometry(
-            0.0028,
-            0.0028,
-            0.018,
-            8,
-          );
-          tunnelGeo.rotateX(Math.PI / 2);
-          const tunnelMat = new THREE.MeshBasicMaterial({ color: 0x111111 });
-          group.add(new THREE.Mesh(tunnelGeo, tunnelMat));
-        } else if (charmType === "spiral_shell") {
-          // Spiral shell — fibonacci logarithmic spiral pendant
-          const spiralPoints = [];
-          const turns = 3.5;
-          const numPts = 80;
-          for (let i = 0; i <= numPts; i++) {
-            const t = i / numPts;
-            const angle = t * turns * Math.PI * 2;
-            const radius = 0.002 + t * 0.013;
-            spiralPoints.push(
-              new THREE.Vector3(
-                Math.cos(angle) * radius,
-                Math.sin(angle) * radius,
-                0,
-              ),
-            );
-          }
-          const spiralCurve = new THREE.CatmullRomCurve3(spiralPoints);
-          const spiralTubeGeo = new THREE.TubeGeometry(
-            spiralCurve,
-            64,
-            0.0018,
-            6,
-            false,
-          );
-
-          const shellMat = new THREE.MeshPhysicalMaterial({
-            color: 0xf8f4ef,
-            roughness: 0.15,
-            metalness: 0.02,
-            clearcoat: 0.6,
-            clearcoatRoughness: 0.1,
-            sheen: 1.0,
-            sheenColor: new THREE.Color(0xf0e8d8),
-          });
-          const spiralMesh = new THREE.Mesh(spiralTubeGeo, shellMat);
-          spiralMesh.castShadow = true;
-          spiralMesh.receiveShadow = true;
-          group.add(spiralMesh);
-
-          // Central nucleus bead
-          const nucleus = new THREE.Mesh(
-            new THREE.SphereGeometry(0.003, 10, 10),
-            shellMat,
-          );
-          nucleus.position.set(0.002, 0, 0);
-          group.add(nucleus);
-
-          // Outer rim accent ring
-          const rimGeo = new THREE.TorusGeometry(
-            0.016,
-            0.001,
-            4,
-            20,
-            Math.PI * 1.5,
-          );
-          const rim = new THREE.Mesh(rimGeo, shellMat);
-          rim.position.z = -0.001;
-          group.add(rim);
-
-          // Bail loop at top
-          const loopGeo = new THREE.TorusGeometry(0.005, 0.0014, 6, 12);
-          const loop = new THREE.Mesh(loopGeo, settingMat);
-          loop.position.y = 0.017;
-          loop.rotation.y = Math.PI / 2;
-          loop.castShadow = true;
-          group.add(loop);
         }
-
+        
         return group;
       }
 
       // =========================================================================
       // STATE & CUSTOMIZER ENGINE STATE
       // =========================================================================
-      let selectedBase = "thread_nylon";
+      let selectedBase = "thread_nylon"; 
       let activeCharms = [
         { id: 1, type: "turquoise_disc", position: 35, scale: 60, rotation: 0 },
-        {
-          id: 2,
-          type: "astrolabe_slide",
-          position: 50,
-          scale: 60,
-          rotation: 0,
-        },
-        { id: 3, type: "gold_nugget", position: 65, scale: 60, rotation: 0 },
+        { id: 2, type: "astrolabe_slide", position: 50, scale: 60, rotation: 0 },
+        { id: 3, type: "gold_nugget", position: 65, scale: 60, rotation: 0 }
       ];
-      let selectedCharmId = 2;
+      let selectedCharmId = 2; 
 
       const BASE_PRICES = {
-        yellow_gold: 250,
-        yellow_gold_thin: 220,
-        white_gold: 280,
-        rose_gold: 260,
-        platinum_thin: 350,
-        beads_organic: 90,
-        beads_turquoise: 120,
-        rope_homemade: 45,
-        thread_nylon: 35,
-        thread_crimson: 40,
-        thread_green: 40,
-        thread_champagne: 40,
+        yellow_gold: 250, yellow_gold_thin: 220, white_gold: 280, rose_gold: 260, platinum_thin: 350,
+        beads_organic: 90, beads_turquoise: 120, rope_homemade: 45, thread_nylon: 35, thread_crimson: 40,
+        thread_green: 40, thread_champagne: 40
       };
       const CHARM_PRICES = {
-        pearl_baroque: 70,
-        pave_bead: 180,
-        amphora_urn: 110,
-        filigree_cage: 140,
-        astrolabe_slide: 95,
-        gold_nugget: 120,
-        talon_emerald: 160,
-        lava_bead: 40,
-        turquoise_disc: 45,
-        hammered_drop: 50,
-        moonstone_cab: 85,
-        obsidian_arrow: 55,
-        sun_medallion: 90,
-        bone_rune: 40,
-        pyrite_cluster: 65,
-        spiral_shell: 75,
+        pearl_baroque: 70, pave_bead: 180, amphora_urn: 110, filigree_cage: 140,
+        astrolabe_slide: 95, gold_nugget: 120, talon_emerald: 160,
+        lava_bead: 40, turquoise_disc: 45, hammered_drop: 50
       };
 
       function rebuild3DCharms() {
         const toRemove = [];
-        chainGroup.children.forEach((c) => {
+        chainGroup.children.forEach(c => {
           if (c.userData.isCharm) toRemove.push(c);
         });
-        toRemove.forEach((c) => chainGroup.remove(c));
-
-        activeCharms.forEach((charm) => {
+        toRemove.forEach(c => chainGroup.remove(c));
+        
+        activeCharms.forEach(charm => {
           const t = charm.position / 100;
           const pos = ropeCurve.getPointAt(t);
           const tangent = ropeCurve.getTangentAt(t);
-
+          
           const meshGroup = createBespokeCharm(charm.type, selectedBase);
           const sc = charm.scale / 100;
           meshGroup.scale.set(sc, sc, sc);
-
-          if (
-            charm.type === "pearl_baroque" ||
-            charm.type === "pave_bead" ||
-            charm.type === "gold_nugget" ||
-            charm.type === "lava_bead" ||
-            charm.type === "turquoise_disc" ||
-            charm.type === "moonstone_cab" ||
-            charm.type === "pyrite_cluster" ||
-            charm.type === "spiral_shell"
-          ) {
+          
+          if (charm.type === "pearl_baroque" || charm.type === "pave_bead" || charm.type === "gold_nugget" || charm.type === "lava_bead" || charm.type === "turquoise_disc") {
             meshGroup.position.set(pos.x, pos.y, pos.z);
-
+            
             const up = new THREE.Vector3(0, 1, 0);
             meshGroup.quaternion.setFromUnitVectors(up, tangent);
-
+            
             meshGroup.rotateY((charm.rotation * Math.PI) / 180);
             charm.hangOffset = 0;
+            
           } else {
-            let localLoopY = 0.018;
+            let localLoopY = 0.018; 
             if (charm.type === "amphora_urn") localLoopY = 0.022;
-            if (charm.type === "astrolabe_slide") localLoopY = 0.02;
+            if (charm.type === "astrolabe_slide") localLoopY = 0.020;
             if (charm.type === "hammered_drop") localLoopY = 0.024;
-            if (charm.type === "obsidian_arrow") localLoopY = 0.026;
-            if (charm.type === "sun_medallion") localLoopY = 0.02;
-            if (charm.type === "bone_rune") localLoopY = 0.018;
-
+            
             const hangOffset = localLoopY * sc;
             meshGroup.position.set(pos.x, pos.y - hangOffset, pos.z);
-
+            
             meshGroup.rotation.y = (charm.rotation * Math.PI) / 180;
             charm.hangOffset = hangOffset;
           }
-
+          
           meshGroup.userData.isCharm = true;
           meshGroup.userData.charmId = charm.id;
           charm.mesh = meshGroup;
-
+          
           chainGroup.add(meshGroup);
         });
       }
@@ -3188,24 +1778,20 @@
       function selectCharm(id) {
         selectedCharmId = id;
         const editor = document.getElementById("editor-section");
-
+        
         if (id === null) {
           editor.style.display = "none";
         } else {
           editor.style.display = "block";
-          const charm = activeCharms.find((c) => c.id === id);
+          const charm = activeCharms.find(c => c.id === id);
           if (charm) {
             document.getElementById("slider-pos").value = charm.position;
-            document.getElementById("slider-pos-val").textContent =
-              charm.position;
+            document.getElementById("slider-pos-val").textContent = charm.position;
             document.getElementById("slider-scale").value = charm.scale;
-            document.getElementById("slider-scale-val").textContent =
-              charm.scale;
+            document.getElementById("slider-scale-val").textContent = charm.scale;
             document.getElementById("slider-rot").value = charm.rotation;
-            document.getElementById("slider-rot-val").textContent =
-              charm.rotation;
-            document.getElementById("editor-title").textContent =
-              `Configure [${charm.type.replace("_", " ").toUpperCase()}]`;
+            document.getElementById("slider-rot-val").textContent = charm.rotation;
+            document.getElementById("editor-title").textContent = `Configure [${charm.type.replace('_',' ').toUpperCase()}]`;
           }
         }
         updateHTMLControls();
@@ -3213,18 +1799,18 @@
 
       function updateActiveCharmProperties() {
         if (selectedCharmId === null) return;
-        const charm = activeCharms.find((c) => c.id === selectedCharmId);
+        const charm = activeCharms.find(c => c.id === selectedCharmId);
         if (!charm) return;
-
+        
         charm.position = parseInt(document.getElementById("slider-pos").value);
         document.getElementById("slider-pos-val").textContent = charm.position;
-
+        
         charm.scale = parseInt(document.getElementById("slider-scale").value);
         document.getElementById("slider-scale-val").textContent = charm.scale;
-
+        
         charm.rotation = parseInt(document.getElementById("slider-rot").value);
         document.getElementById("slider-rot-val").textContent = charm.rotation;
-
+        
         rebuild3DCharms();
         updateHTMLControls();
       }
@@ -3234,51 +1820,42 @@
         if (activeCharms.length === 0) {
           charmsList.innerHTML = `<div style="text-align: center; color: var(--text-muted); font-size: 14px; padding: 16px; font-weight: 300;">No charms selected yet.</div>`;
         } else {
-          charmsList.innerHTML = activeCharms
-            .map((c) => {
-              let emoji = "💎";
-              if (c.type === "pearl_baroque") emoji = "⚪";
-              if (c.type === "pave_bead") emoji = "✨";
-              if (c.type === "amphora_urn") emoji = "🏺";
-              if (c.type === "filigree_cage") emoji = "🕸️";
-              if (c.type === "astrolabe_slide") emoji = "🧭";
-              if (c.type === "gold_nugget") emoji = "🪙";
-              if (c.type === "talon_emerald") emoji = "💚";
-              if (c.type === "lava_bead") emoji = "⚫";
-              if (c.type === "turquoise_disc") emoji = "🟢";
-              if (c.type === "hammered_drop") emoji = "🔨";
-              if (c.type === "moonstone_cab") emoji = "🌙";
-              if (c.type === "obsidian_arrow") emoji = "⬛";
-              if (c.type === "sun_medallion") emoji = "☀️";
-              if (c.type === "bone_rune") emoji = "🦴";
-              if (c.type === "pyrite_cluster") emoji = "✨";
-              if (c.type === "spiral_shell") emoji = "🐚";
-
-              const isSelected = c.id === selectedCharmId;
-              return `
-              <div class="charm-list-item ${isSelected ? "selected" : ""}" data-id="${c.id}">
+          charmsList.innerHTML = activeCharms.map(c => {
+            let emoji = "💎";
+            if (c.type === "pearl_baroque") emoji = "⚪";
+            if (c.type === "pave_bead") emoji = "✨";
+            if (c.type === "amphora_urn") emoji = "🏺";
+            if (c.type === "filigree_cage") emoji = "🕸️";
+            if (c.type === "astrolabe_slide") emoji = "🧭";
+            if (c.type === "gold_nugget") emoji = "🪙";
+            if (c.type === "talon_emerald") emoji = "💚";
+            if (c.type === "lava_bead") emoji = "⚫";
+            if (c.type === "turquoise_disc") emoji = "🟢";
+            if (c.type === "hammered_drop") emoji = "🔨";
+            
+            const isSelected = c.id === selectedCharmId;
+            return `
+              <div class="charm-list-item ${isSelected ? 'selected' : ''}" data-id="${c.id}">
                 <div class="charm-details" style="cursor: pointer;">
                   <span class="icon">${emoji}</span>
                   <div class="meta">
-                    <span class="name">${c.type.replace("_", " ").toUpperCase()}</span>
+                    <span class="name">${c.type.replace('_',' ').toUpperCase()}</span>
                     <span class="info">Pos: ${c.position}% · Scale: ${c.scale}%</span>
                   </div>
                 </div>
                 <span class="btn-remove" data-id="${c.id}">Delete</span>
               </div>
             `;
-            })
-            .join("");
+          }).join("");
         }
 
         const basePrice = BASE_PRICES[selectedBase] || 90;
         let total = basePrice;
-        activeCharms.forEach((c) => {
+        activeCharms.forEach(c => {
           total += CHARM_PRICES[c.type] || 50;
         });
         document.getElementById("hud-price").textContent = `$${total}`;
-        document.getElementById("total-price-display").textContent =
-          `$${total.toFixed(2)}`;
+        document.getElementById("total-price-display").textContent = `$${total.toFixed(2)}`;
       }
 
       // =========================================================================
@@ -3292,17 +1869,17 @@
       function getClosestTToRay(ray) {
         let minDistance = Infinity;
         let closestT = 0.5;
-        const samples = 120;
+        const samples = 120; 
         const O = ray.origin;
         const D = ray.direction;
-
+        
         for (let i = 0; i <= samples; i++) {
           const t = i / samples;
           const C = ropeCurve.getPointAt(t);
-
+          
           const C_minus_O = C.clone().sub(O);
           const dist = C_minus_O.cross(D).length();
-
+          
           if (dist < minDistance) {
             minDistance = dist;
             closestT = t;
@@ -3311,19 +1888,16 @@
         return closestT;
       }
 
-      renderer.domElement.addEventListener("pointerdown", (e) => {
+      renderer.domElement.addEventListener("pointerdown", e => {
         if (e.button !== 0) return;
-
+        
         const rect = renderer.domElement.getBoundingClientRect();
         mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
         mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
+        
         raycaster.setFromCamera(mouse, camera);
-
-        const intersects = raycaster.intersectObjects(
-          chainGroup.children,
-          true,
-        );
+        
+        const intersects = raycaster.intersectObjects(chainGroup.children, true);
         if (intersects.length > 0) {
           let parent = intersects[0].object;
           let charmId = null;
@@ -3334,7 +1908,7 @@
             }
             parent = parent.parent;
           }
-
+          
           if (charmId !== null) {
             isDragging = true;
             draggedCharmId = charmId;
@@ -3344,28 +1918,24 @@
         }
       });
 
-      renderer.domElement.addEventListener("pointermove", (e) => {
+      renderer.domElement.addEventListener("pointermove", e => {
         if (!isDragging || draggedCharmId === null) return;
-
+        
         const rect = renderer.domElement.getBoundingClientRect();
         mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
         mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
+        
         raycaster.setFromCamera(mouse, camera);
         const closestT = getClosestTToRay(raycaster.ray);
-
-        const charm = activeCharms.find((c) => c.id === draggedCharmId);
+        
+        const charm = activeCharms.find(c => c.id === draggedCharmId);
         if (charm) {
-          charm.position = Math.max(
-            10,
-            Math.min(90, Math.round(closestT * 100)),
-          );
+          charm.position = Math.max(10, Math.min(90, Math.round(closestT * 100)));
           rebuild3DCharms();
           updateHTMLControls();
-
+          
           document.getElementById("slider-pos").value = charm.position;
-          document.getElementById("slider-pos-val").textContent =
-            charm.position;
+          document.getElementById("slider-pos-val").textContent = charm.position;
         }
       });
 
@@ -3382,31 +1952,26 @@
       // =========================================================================
       // DRAG AND DROP / DOUBLE CLICK INVENTORY
       // =========================================================================
-      const inventoryItems = document.querySelectorAll(
-        "#charms-inventory .grid-item",
-      );
-
-      inventoryItems.forEach((item) => {
-        item.addEventListener("dragstart", (e) => {
+      const inventoryItems = document.querySelectorAll("#charms-inventory .grid-item");
+      
+      inventoryItems.forEach(item => {
+        item.addEventListener("dragstart", e => {
           e.dataTransfer.setData("text/plain", item.getAttribute("data-charm"));
           e.dataTransfer.effectAllowed = "copy";
         });
-
-        item.addEventListener("dblclick", (e) => {
+        
+        item.addEventListener("dblclick", e => {
           const charmType = item.getAttribute("data-charm");
-          const nextId =
-            activeCharms.length > 0
-              ? Math.max(...activeCharms.map((c) => c.id)) + 1
-              : 1;
-
+          const nextId = activeCharms.length > 0 ? Math.max(...activeCharms.map(c => c.id)) + 1 : 1;
+          
           const newCharm = {
             id: nextId,
             type: charmType,
             position: 50,
             scale: 60,
-            rotation: 0,
+            rotation: 0
           };
-
+          
           activeCharms.push(newCharm);
           rebuild3DCharms();
           selectCharm(newCharm.id);
@@ -3414,36 +1979,33 @@
       });
 
       const canvasWrap = document.querySelector(".canvas-wrap");
-
-      canvasWrap.addEventListener("dragover", (e) => {
+      
+      canvasWrap.addEventListener("dragover", e => {
         e.preventDefault();
         e.dataTransfer.dropEffect = "copy";
       });
-
-      canvasWrap.addEventListener("drop", (e) => {
+      
+      canvasWrap.addEventListener("drop", e => {
         e.preventDefault();
         const charmType = e.dataTransfer.getData("text/plain");
         if (!charmType) return;
-
+        
         const rect = renderer.domElement.getBoundingClientRect();
         const mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
         const mouseY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
+        
         raycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
         const closestT = getClosestTToRay(raycaster.ray);
-        const nextId =
-          activeCharms.length > 0
-            ? Math.max(...activeCharms.map((c) => c.id)) + 1
-            : 1;
-
+        const nextId = activeCharms.length > 0 ? Math.max(...activeCharms.map(c => c.id)) + 1 : 1;
+        
         const newCharm = {
           id: nextId,
           type: charmType,
           position: Math.max(10, Math.min(90, Math.round(closestT * 100))),
           scale: 60,
-          rotation: 0,
+          rotation: 0
         };
-
+        
         activeCharms.push(newCharm);
         rebuild3DCharms();
         selectCharm(newCharm.id);
@@ -3454,56 +2016,44 @@
       // =========================================================================
       function setBaseStyle(baseId) {
         selectedBase = baseId;
-
-        document
-          .querySelectorAll(".color-circle")
-          .forEach((c) => c.classList.remove("active"));
-
-        const activeSwatch = document.querySelector(
-          `.color-circle[data-base="${baseId}"]`,
-        );
+        
+        document.querySelectorAll(".color-circle").forEach(c => c.classList.remove("active"));
+        
+        const activeSwatch = document.querySelector(`.color-circle[data-base="${baseId}"]`);
         if (activeSwatch) activeSwatch.classList.add("active");
-
+        
         rebuildChainMesh();
         rebuild3DCharms();
         updateHTMLControls();
       }
 
-      document
-        .getElementById("metal-base-selector")
-        .addEventListener("click", (e) => {
-          const circle = e.target.closest(".color-circle");
-          if (circle) setBaseStyle(circle.getAttribute("data-base"));
-        });
+      document.getElementById("metal-base-selector").addEventListener("click", e => {
+        const circle = e.target.closest(".color-circle");
+        if (circle) setBaseStyle(circle.getAttribute("data-base"));
+      });
+      
+      document.getElementById("thread-base-selector").addEventListener("click", e => {
+        const circle = e.target.closest(".color-circle");
+        if (circle) setBaseStyle(circle.getAttribute("data-base"));
+      });
 
-      document
-        .getElementById("thread-base-selector")
-        .addEventListener("click", (e) => {
-          const circle = e.target.closest(".color-circle");
-          if (circle) setBaseStyle(circle.getAttribute("data-base"));
-        });
+      document.getElementById("active-charms-list").addEventListener("click", e => {
+        const btnRemove = e.target.closest(".btn-remove");
+        if (btnRemove) {
+          const id = parseInt(btnRemove.getAttribute("data-id"));
+          activeCharms = activeCharms.filter(c => c.id !== id);
+          if (selectedCharmId === id) selectedCharmId = activeCharms.length > 0 ? activeCharms[0].id : null;
+          rebuild3DCharms();
+          selectCharm(selectedCharmId);
+          return;
+        }
 
-      document
-        .getElementById("active-charms-list")
-        .addEventListener("click", (e) => {
-          const btnRemove = e.target.closest(".btn-remove");
-          if (btnRemove) {
-            const id = parseInt(btnRemove.getAttribute("data-id"));
-            activeCharms = activeCharms.filter((c) => c.id !== id);
-            if (selectedCharmId === id)
-              selectedCharmId =
-                activeCharms.length > 0 ? activeCharms[0].id : null;
-            rebuild3DCharms();
-            selectCharm(selectedCharmId);
-            return;
-          }
-
-          const item = e.target.closest(".charm-list-item");
-          if (item) {
-            const id = parseInt(item.getAttribute("data-id"));
-            selectCharm(id);
-          }
-        });
+        const item = e.target.closest(".charm-list-item");
+        if (item) {
+          const id = parseInt(item.getAttribute("data-id"));
+          selectCharm(id);
+        }
+      });
 
       document.getElementById("clear-assets").addEventListener("click", () => {
         activeCharms = [];
@@ -3512,43 +2062,23 @@
         selectCharm(null);
       });
 
-      document
-        .getElementById("slider-pos")
-        .addEventListener("input", updateActiveCharmProperties);
-      document
-        .getElementById("slider-scale")
-        .addEventListener("input", updateActiveCharmProperties);
-      document
-        .getElementById("slider-rot")
-        .addEventListener("input", updateActiveCharmProperties);
+      document.getElementById("slider-pos").addEventListener("input", updateActiveCharmProperties);
+      document.getElementById("slider-scale").addEventListener("input", updateActiveCharmProperties);
+      document.getElementById("slider-rot").addEventListener("input", updateActiveCharmProperties);
 
       document.getElementById("btn-order").addEventListener("click", () => {
-        alert(
-          `✦ Telemetry Secured! Your custom lariat configuration is locked and catalogued.`,
-        );
+        alert(`✦ Telemetry Secured! Your custom lariat configuration is locked and catalogued.`);
       });
 
       // Zoom Controls
       document.getElementById("zoom-in").addEventListener("click", () => {
         const dir = camera.position.clone().sub(controls.target).normalize();
-        camera.position
-          .copy(controls.target)
-          .add(
-            dir.multiplyScalar(
-              Math.max(0.4, camera.position.distanceTo(controls.target) - 0.1),
-            ),
-          );
+        camera.position.copy(controls.target).add(dir.multiplyScalar(Math.max(0.4, camera.position.distanceTo(controls.target) - 0.1)));
         controls.update();
       });
       document.getElementById("zoom-out").addEventListener("click", () => {
         const dir = camera.position.clone().sub(controls.target).normalize();
-        camera.position
-          .copy(controls.target)
-          .add(
-            dir.multiplyScalar(
-              Math.min(1.5, camera.position.distanceTo(controls.target) + 0.1),
-            ),
-          );
+        camera.position.copy(controls.target).add(dir.multiplyScalar(Math.min(1.5, camera.position.distanceTo(controls.target) + 0.1)));
         controls.update();
       });
       document.getElementById("reset-view").addEventListener("click", () => {
@@ -3558,47 +2088,35 @@
       });
 
       // ============== INITIALIZATION ==============
-      setBaseStyle("thread_nylon");
+      setBaseStyle("thread_nylon"); 
 
       // ============== ANIMATION LOOP ==============
       function animate() {
         requestAnimationFrame(animate);
         const time = Date.now() / 1000;
-
+        
         chainGroup.position.y = Math.sin(time * 0.4) * 0.0025;
-
-        activeCharms.forEach((charm) => {
+        
+        activeCharms.forEach(charm => {
           if (charm.mesh) {
             const sc = charm.scale / 100;
-
+            
             if (charm.id === selectedCharmId) {
               const pulse = 1.0 + Math.sin(time * 4.5) * 0.04;
               charm.mesh.scale.set(sc * pulse, sc * pulse, sc * pulse);
             } else {
               charm.mesh.scale.set(sc, sc, sc);
             }
-
-            if (
-              charm.type === "pearl_baroque" ||
-              charm.type === "pave_bead" ||
-              charm.type === "gold_nugget" ||
-              charm.type === "lava_bead" ||
-              charm.type === "turquoise_disc" ||
-              charm.type === "moonstone_cab" ||
-              charm.type === "pyrite_cluster" ||
-              charm.type === "spiral_shell"
-            ) {
-              charm.mesh.rotation.y =
-                ((charm.rotation + Math.sin(time * 0.6 + charm.id) * 3) *
-                  Math.PI) /
-                180;
+            
+            if (charm.type === "pearl_baroque" || charm.type === "pave_bead" || charm.type === "gold_nugget" || charm.type === "lava_bead" || charm.type === "turquoise_disc") {
+              charm.mesh.rotation.y = ((charm.rotation + Math.sin(time * 0.6 + charm.id) * 3) * Math.PI) / 180;
             } else {
               const swingX = Math.sin(time * 0.8 + charm.id) * 0.015;
               charm.mesh.rotation.z = swingX;
             }
           }
         });
-
+        
         controls.update();
         renderer.render(scene, camera);
       }
@@ -3606,8 +2124,7 @@
 
       // ============== VIEWPORT RESIZE ==============
       function onResize() {
-        const w = container.clientWidth,
-          h = container.clientHeight;
+        const w = container.clientWidth, h = container.clientHeight;
         if (w === 0 || h === 0) return;
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
@@ -3615,6 +2132,7 @@
       }
       window.addEventListener("resize", onResize);
       setTimeout(onResize, 150);
+
     </script>
   </body>
 </html>
