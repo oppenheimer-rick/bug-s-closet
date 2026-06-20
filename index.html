@@ -698,10 +698,78 @@
         cursor: crosshair;
       }
 
-      /* Green Ladybug style */
+      /* Header Ladybug Hue Shift */
       .green-ladybug {
         display: inline-block;
         filter: hue-rotate(110deg) saturate(1.4);
+      }
+
+      /* Flying Ladybug Styles */
+      .bug-container {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        vertical-align: middle;
+        position: relative;
+        margin-left: 6px;
+      }
+      .interactive-bug {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        user-select: none;
+        font-size: 26px;
+        line-height: 1;
+        transition: transform 0.2s ease;
+        z-index: 90;
+      }
+      .interactive-bug:hover {
+        transform: scale(1.2) rotate(-5deg);
+      }
+      .interactive-bug .wing {
+        position: absolute;
+        width: 12px;
+        height: 18px;
+        background: #d91e36; /* vibrant red wing */
+        border: 2px solid var(--cupcake-brown);
+        border-radius: 50% 50% 10% 50%;
+        top: 2px;
+        opacity: 0;
+        transition: opacity 0.15s ease;
+        z-index: -1;
+      }
+      .interactive-bug .wing.left {
+        left: -4px;
+        transform-origin: right center;
+      }
+      .interactive-bug .wing.right {
+        right: -4px;
+        border-radius: 50% 50% 50% 10%;
+        transform-origin: left center;
+      }
+      /* Wing Flapping */
+      .interactive-bug.flying .wing {
+        opacity: 1;
+      }
+      .interactive-bug.flying .wing.left {
+        animation: flap-left 0.06s infinite alternate;
+      }
+      .interactive-bug.flying .wing.right {
+        animation: flap-right 0.06s infinite alternate;
+      }
+      @keyframes flap-left {
+        0% { transform: rotateY(0deg) rotateZ(0deg); }
+        100% { transform: rotateY(75deg) rotateZ(-25deg); }
+      }
+      @keyframes flap-right {
+        0% { transform: rotateY(0deg) rotateZ(0deg); }
+        100% { transform: rotateY(75deg) rotateZ(25deg); }
       }
 
       /* Collapsible details styling for retro customizer panels */
@@ -879,7 +947,7 @@
     <section class="hero" id="hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1>Step Into <em>Bug's</em> Closet 🐞</h1>
+          <h1>Enter the Workshop <span class="bug-container"><span class="interactive-bug"><span class="wing left"></span><span class="wing right"></span>🐞</span></span></h1>
           <p class="lede">Design your signature beaded lariat online. Threaded with organic volcanic stone, turquoise disc plates, and hammered copper charms on a sleek black cord.</p>
           
           <!-- RPG HUD Bars -->
@@ -1218,7 +1286,7 @@
         <a href="#faq">FAQ</a>
         <a href="#contact">Inquire</a>
       </div>
-      <p class="foot-note">© 2026 Bug's Closet 🐞. Designed for JRPG adventurers.<br>All creations forged in small, meticulously-controlled batches in Geneva and Tokyo.</p>
+      <p class="foot-note">© 2026 Bug's Closet 🐞. An online art shop and portfolio showcasing handcrafted, bespoke jewelry creations.<br>Every piece is individually curated and custom-made to order.</p>
       <p class="foot-credit" style="font-size: 14px; margin-top: 16px; color: var(--text-muted); font-family: var(--font-pixel);">Created by <a href="https://github.com/oppenheimer-rick" target="_blank" rel="noopener noreferrer" style="color: var(--cherry-pink); text-decoration: underline;">Shakib S.</a></p>
     </footer>
 
@@ -2262,6 +2330,76 @@
       document.getElementById("btn-order").addEventListener("click", () => {
         alert(`✦ Telemetry Secured! Your custom lariat configuration is locked and catalogued.`);
       });
+
+      // Flying Ladybug Interaction
+      const heroBug = document.querySelector(".interactive-bug");
+      let isFlying = false;
+
+      if (heroBug) {
+        heroBug.addEventListener("click", () => {
+          if (isFlying) return;
+          isFlying = true;
+
+          // Start coordinates
+          const rect = heroBug.getBoundingClientRect();
+          const startX = rect.left + window.pageXOffset;
+          const startY = rect.top + window.pageYOffset;
+
+          // Append to body to bypass relative parent containers
+          if (heroBug.parentNode !== document.body) {
+            document.body.appendChild(heroBug);
+          }
+
+          // Initial absolute positioning
+          heroBug.style.position = "absolute";
+          heroBug.style.left = `${startX}px`;
+          heroBug.style.top = `${startY}px`;
+          heroBug.style.margin = "0";
+          heroBug.style.zIndex = "90"; // Keep below navigation bar (z-index: 100)
+
+          // Start flight animation
+          heroBug.classList.add("flying");
+
+          // Calculate target coordinates
+          const margin = 80;
+          let absTargetX, absTargetY;
+
+          // 30% chance to land anywhere on page
+          if (Math.random() < 0.3) {
+            const docWidth = Math.max(document.documentElement.scrollWidth, window.innerWidth);
+            const docHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+            absTargetX = Math.random() * (docWidth - margin * 2) + margin;
+            absTargetY = Math.random() * (docHeight - margin * 2) + margin;
+          } else {
+            // 70% chance to land in current viewport
+            const viewX = Math.random() * (window.innerWidth - margin * 2) + margin;
+            const viewY = Math.random() * (window.innerHeight - margin * 2) + margin;
+            absTargetX = viewX + window.pageXOffset;
+            absTargetY = viewY + window.pageYOffset;
+          }
+
+          // Rotation based on flight path angle
+          const deltaX = absTargetX - startX;
+          const deltaY = absTargetY - startY;
+          const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI) + 90;
+
+          // Start movement
+          setTimeout(() => {
+            heroBug.style.transition = "left 1.8s cubic-bezier(0.25, 1, 0.5, 1), top 1.8s cubic-bezier(0.25, 1, 0.5, 1), transform 1.8s ease";
+            heroBug.style.left = `${absTargetX}px`;
+            heroBug.style.top = `${absTargetY}px`;
+            heroBug.style.transform = `rotate(${angle}deg) scale(1.3)`;
+          }, 40);
+
+          // Land and reset
+          setTimeout(() => {
+            heroBug.classList.remove("flying");
+            heroBug.style.transition = "transform 0.4s ease";
+            heroBug.style.transform = "rotate(0deg) scale(1)";
+            isFlying = false;
+          }, 1840);
+        });
+      }
 
       // Zoom Controls
       document.getElementById("zoom-in").addEventListener("click", () => {
