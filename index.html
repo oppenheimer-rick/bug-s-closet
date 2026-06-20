@@ -646,6 +646,12 @@
         position: relative;
         overflow: hidden;
       }
+      .hero-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
       .hero-img-container::before {
         content: '';
         position: absolute;
@@ -691,12 +697,174 @@
       .canvas-wrap:hover {
         cursor: crosshair;
       }
+
+      /* Green Ladybug style */
+      .green-ladybug {
+        display: inline-block;
+        filter: hue-rotate(110deg) saturate(1.4);
+      }
+
+      /* Collapsible details styling for retro customizer panels */
+      details.console-section {
+        display: block; /* Override any potential flex conflict */
+      }
+      details.console-section summary {
+        cursor: pointer;
+        list-style: none;
+        outline: none;
+        user-select: none;
+      }
+      details.console-section summary::-webkit-details-marker {
+        display: none;
+      }
+      details.console-section .console-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      details.console-section[open] .console-title {
+        border-bottom: 3px solid var(--cupcake-brown);
+        padding-bottom: 12px;
+        margin-bottom: 16px;
+      }
+      details.console-section .chevron::after {
+        content: ' [+]';
+        font-family: monospace;
+        font-size: 8px;
+        color: var(--text-muted);
+      }
+      details.console-section[open] .chevron::after {
+        content: ' [-]';
+      }
+
+      /* Desktop adjustments for details content spacing */
+      details.console-section .details-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* Mobile Optimizations (max-width: 1000px) */
+      @media (max-width: 1000px) {
+        .cabinet-container {
+          overflow: visible !important; /* Ensure sticky panel is not clipped */
+        }
+        .cabinet-screen-pane {
+          position: sticky !important;
+          top: 80px !important; /* Right under the sticky nav */
+          z-index: 40 !important;
+          box-shadow: 0 6px 12px rgba(92, 61, 46, 0.1) !important;
+        }
+        .canvas-wrap {
+          height: 300px !important; /* Extremely compact and viewable */
+        }
+      }
+
+      /* Mobile Spacing & Compactness (max-width: 600px) */
+      @media (max-width: 600px) {
+        /* Section paddings and headers */
+        .section {
+          padding: 32px 0 !important;
+        }
+        .section-head {
+          margin-bottom: 24px !important;
+        }
+        .section-head p {
+          font-size: 16px !important;
+          line-height: 1.4;
+        }
+        
+        /* Fine Disciplines Cards - 2 Columns (not covering whole screen) */
+        .categories {
+          grid-template-columns: 1fr 1fr !important;
+          gap: 12px !important;
+          padding: 0 8px;
+        }
+        .cat-card {
+          padding: 16px 12px !important;
+          box-shadow: 4px 4px 0 var(--cupcake-brown) !important;
+        }
+        .cat-card .cat-icon {
+          font-size: 28px !important;
+          margin-bottom: 8px !important;
+        }
+        .cat-card h3 {
+          font-size: 8px !important;
+          margin-bottom: 6px !important;
+        }
+        .cat-card p {
+          font-size: 13px !important;
+          line-height: 1.3;
+        }
+
+        /* Gallery Cards - 2 Columns (not covering whole screen) */
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr !important;
+          gap: 12px !important;
+          padding: 0 8px;
+        }
+        .g-card {
+          box-shadow: 4px 4px 0 var(--cupcake-brown) !important;
+        }
+        .g-thumb {
+          font-size: 32px !important;
+          border-bottom-width: 3px !important;
+        }
+        .g-body {
+          padding: 10px !important;
+        }
+        .g-body h4 {
+          font-size: 8px !important;
+          margin-bottom: 4px !important;
+        }
+        .g-body .g-tag {
+          font-size: 10px !important;
+        }
+
+        /* About / NPC dialogues compacting */
+        .about-grid {
+          gap: 16px !important;
+        }
+        .about-grid .portrait-frame {
+          max-width: 110px !important;
+        }
+        .rpg-dialog {
+          padding: 16px !important;
+          box-shadow: 4px 4px 0 var(--cupcake-brown) !important;
+        }
+        .rpg-dialog h3 {
+          font-size: 10px !important;
+          margin-bottom: 8px !important;
+        }
+        .rpg-dialog p {
+          font-size: 14px !important;
+          line-height: 1.4;
+        }
+
+        /* Contact terminal card spacing */
+        .pixel-window {
+          box-shadow: 4px 4px 0 var(--cherry-pink) !important;
+        }
+        .terminal-body {
+          padding: 16px !important;
+        }
+        .terminal-field label {
+          font-size: 8px !important;
+        }
+        .terminal-field input {
+          font-size: 16px !important;
+          padding: 8px !important;
+        }
+      }
     </style>
   </head>
   <body>
     <nav>
       <div class="nav-inner">
-        <a href="#" class="nav-logo">Bug's <em>Closet</em> 🧁</a>
+        <a href="#" class="nav-logo"><span class="green-ladybug" style="margin-right: 6px;">🐞</span>Bug's <em>Closet</em> 🐞</a>
         <div class="nav-links">
           <a href="#work">Collections</a>
           <a href="#showroom" class="active-link">Atelier</a>
@@ -711,7 +879,7 @@
     <section class="hero" id="hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1>Step Into <em>Bug's</em> Closet 🧁</h1>
+          <h1>Step Into <em>Bug's</em> Closet 🐞</h1>
           <p class="lede">Design your signature beaded lariat online. Threaded with organic volcanic stone, turquoise disc plates, and hammered copper charms on a sleek black cord.</p>
           
           <!-- RPG HUD Bars -->
@@ -740,7 +908,7 @@
         </div>
         <div class="hero-visual">
           <div class="hero-img-container">
-            🧁
+            <img src="assets/hero_ladybug.png" alt="Bug's Closet Bespoke Ladybug Necklace" />
           </div>
         </div>
       </div>
@@ -807,59 +975,69 @@
           <!-- Right: Sleek Customizer Controls -->
           <div class="cabinet-control-pane">
             <!-- Chain/Base Style Selector -->
-            <div class="console-section">
-              <div class="console-title">Select Base Style</div>
-              
-              <div style="font-family: var(--font-arcade); font-size: 8px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">Chains &amp; Metals</div>
-              <div class="color-circles" id="metal-base-selector" style="margin-bottom: 16px;">
-                <div class="color-circle" data-base="yellow_gold" style="background: linear-gradient(135deg, #fbe3b5 0%, #e5c158 50%, #b8952a 100%);" title="Yellow Gold Chain"></div>
-                <div class="color-circle" data-base="yellow_gold_thin" style="background: linear-gradient(135deg, #fbe3b5 0%, #e5c158 50%, #b8952a 100%); position: relative; border-style: dashed; border-color: var(--border-light);" title="Ultra-Thin Yellow Gold Chain">
-                  <span style="font-size: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 800; pointer-events: none;">XS</span>
+            <details class="console-section" id="base-style-details" open>
+              <summary>
+                <div class="console-title">
+                  <span>Select Base Style</span>
+                  <span class="chevron"></span>
                 </div>
-                <div class="color-circle" data-base="white_gold" style="background: linear-gradient(135deg, #ffffff 0%, #e2e2e2 50%, #bababa 100%);" title="White Gold Chain"></div>
-                <div class="color-circle" data-base="rose_gold" style="background: linear-gradient(135deg, #fad2c4 0%, #e0a899 50%, #b87b6c 100%);" title="Rose Gold Chain"></div>
-                <div class="color-circle" data-base="platinum_thin" style="background: linear-gradient(135deg, #f0f1f2 0%, #d5d6d8 50%, #9fa1a6 100%); position: relative; border-style: dashed; border-color: var(--border-light);" title="Ultra-Thin Platinum Chain">
-                  <span style="font-size: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 800; pointer-events: none;">XS</span>
+              </summary>
+              <div class="details-content">
+                <div style="font-family: var(--font-arcade); font-size: 8px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">Chains &amp; Metals</div>
+                <div class="color-circles" id="metal-base-selector" style="margin-bottom: 16px;">
+                  <div class="color-circle" data-base="yellow_gold" style="background: linear-gradient(135deg, #fbe3b5 0%, #e5c158 50%, #b8952a 100%);" title="Yellow Gold Chain"></div>
+                  <div class="color-circle" data-base="yellow_gold_thin" style="background: linear-gradient(135deg, #fbe3b5 0%, #e5c158 50%, #b8952a 100%); position: relative; border-style: dashed; border-color: var(--border-light);" title="Ultra-Thin Yellow Gold Chain">
+                    <span style="font-size: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 800; pointer-events: none;">XS</span>
+                  </div>
+                  <div class="color-circle" data-base="white_gold" style="background: linear-gradient(135deg, #ffffff 0%, #e2e2e2 50%, #bababa 100%);" title="White Gold Chain"></div>
+                  <div class="color-circle" data-base="rose_gold" style="background: linear-gradient(135deg, #fad2c4 0%, #e0a899 50%, #b87b6c 100%);" title="Rose Gold Chain"></div>
+                  <div class="color-circle" data-base="platinum_thin" style="background: linear-gradient(135deg, #f0f1f2 0%, #d5d6d8 50%, #9fa1a6 100%); position: relative; border-style: dashed; border-color: var(--border-light);" title="Ultra-Thin Platinum Chain">
+                    <span style="font-size: 8px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 800; pointer-events: none;">XS</span>
+                  </div>
                 </div>
-              </div>
 
-              <div style="font-family: var(--font-arcade); font-size: 8px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">Threads &amp; Organic Beads</div>
-              <div class="color-circles" id="thread-base-selector">
-                <div class="color-circle" data-base="beads_organic" style="background: radial-gradient(circle, #fcfbfa 0%, #dfdcd6 70%, #b8b4ad 100%);" title="Organic Beaded Strand"></div>
-                <div class="color-circle" data-base="beads_turquoise" style="background: radial-gradient(circle, #e0fbfc 0%, #2bbab4 70%, #15726e 100%);" title="Turquoise Bead Strand"></div>
-                <div class="color-circle" data-base="rope_homemade" style="background: linear-gradient(45deg, #c4b39a 25%, #a8967d 25%, #a8967d 50%, #c4b39a 50%, #c4b39a 75%, #a8967d 75%); background-size: 10px 10px;" title="Homemade Slim Rope"></div>
-                <div class="color-circle active" data-base="thread_nylon" style="background: #111111;" title="Nylon Black Thread"></div>
-                <div class="color-circle" data-base="thread_crimson" style="background: #a91e2b;" title="Crimson Silk Thread"></div>
-                <div class="color-circle" data-base="thread_green" style="background: #1f3c30;" title="Forest Green Cord"></div>
-                <div class="color-circle" data-base="thread_champagne" style="background: #dfceb8;" title="Champagne Silk Cord"></div>
+                <div style="font-family: var(--font-arcade); font-size: 8px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em;">Threads &amp; Organic Beads</div>
+                <div class="color-circles" id="thread-base-selector">
+                  <div class="color-circle" data-base="beads_organic" style="background: radial-gradient(circle, #fcfbfa 0%, #dfdcd6 70%, #b8b4ad 100%);" title="Organic Beaded Strand"></div>
+                  <div class="color-circle" data-base="beads_turquoise" style="background: radial-gradient(circle, #e0fbfc 0%, #2bbab4 70%, #15726e 100%);" title="Turquoise Bead Strand"></div>
+                  <div class="color-circle" data-base="rope_homemade" style="background: linear-gradient(45deg, #c4b39a 25%, #a8967d 25%, #a8967d 50%, #c4b39a 50%, #c4b39a 75%, #a8967d 75%); background-size: 10px 10px;" title="Homemade Slim Rope"></div>
+                  <div class="color-circle active" data-base="thread_nylon" style="background: #111111;" title="Nylon Black Thread"></div>
+                  <div class="color-circle" data-base="thread_crimson" style="background: #a91e2b;" title="Crimson Silk Thread"></div>
+                  <div class="color-circle" data-base="thread_green" style="background: #1f3c30;" title="Forest Green Cord"></div>
+                  <div class="color-circle" data-base="thread_champagne" style="background: #dfceb8;" title="Champagne Silk Cord"></div>
+                </div>
               </div>
-            </div>
+            </details>
 
             <!-- Add Bespoke Charms -->
-            <div class="console-section">
-              <div class="console-title" style="display: flex; justify-content: space-between; align-items: center;">
-                <span>Charm Inventory</span>
-                <span style="font-family: var(--font-arcade); font-size: 6px; color: var(--text-muted);">Drag / Dbl-Click</span>
+            <details class="console-section" id="inventory-details" open>
+              <summary>
+                <div class="console-title">
+                  <span>Charm Inventory</span>
+                  <span class="chevron"></span>
+                </div>
+              </summary>
+              <div class="details-content">
+                <div class="grid-selector" id="charms-inventory">
+                  <div class="grid-item" data-charm="turquoise_disc" title="Turquoise Disc Bead" draggable="true">
+                    <span class="icon">🟢</span>
+                    <span class="label">Turquoise</span>
+                  </div>
+                  <div class="grid-item" data-charm="astrolabe_slide" title="Celestial Astrolabe Disc" draggable="true">
+                    <span class="icon">🧭</span>
+                    <span class="label">Astrolabe</span>
+                  </div>
+                  <div class="grid-item" data-charm="gold_nugget" title="Raw 24k Gold Nugget" draggable="true">
+                    <span class="icon">🪙</span>
+                    <span class="label">Raw Nugget</span>
+                  </div>
+                  <div class="grid-item" data-charm="hammered_drop" title="Hammered Copper Drop" draggable="true">
+                    <span class="icon">🔨</span>
+                    <span class="label">Copper Drop</span>
+                  </div>
+                </div>
               </div>
-              <div class="grid-selector" id="charms-inventory">
-                <div class="grid-item" data-charm="turquoise_disc" title="Turquoise Disc Bead" draggable="true">
-                  <span class="icon">🟢</span>
-                  <span class="label">Turquoise</span>
-                </div>
-                <div class="grid-item" data-charm="astrolabe_slide" title="Celestial Astrolabe Disc" draggable="true">
-                  <span class="icon">🧭</span>
-                  <span class="label">Astrolabe</span>
-                </div>
-                <div class="grid-item" data-charm="gold_nugget" title="Raw 24k Gold Nugget" draggable="true">
-                  <span class="icon">🪙</span>
-                  <span class="label">Raw Nugget</span>
-                </div>
-                <div class="grid-item" data-charm="hammered_drop" title="Hammered Copper Drop" draggable="true">
-                  <span class="icon">🔨</span>
-                  <span class="label">Copper Drop</span>
-                </div>
-              </div>
-            </div>
+            </details>
 
             <!-- Edit Selected Charm -->
             <div class="console-section" id="editor-section" style="display: none;">
@@ -893,16 +1071,23 @@
               </div>
             </div>
 
-            <!-- Active Charms List -->
-            <div class="console-section">
-              <div class="console-title" style="display: flex; justify-content: space-between; align-items: center;">
-                <span>Active Attachments</span>
-                <button class="luxury-btn btn-outline" id="clear-assets" style="padding: 4px 10px; font-size: 8px; font-weight: 600;">Remove All</button>
+            <!-- Active Attachments List -->
+            <details class="console-section" id="attachments-details" open>
+              <summary>
+                <div class="console-title">
+                  <span>Active Attachments</span>
+                  <span class="chevron"></span>
+                </div>
+              </summary>
+              <div class="details-content">
+                <div style="display: flex; justify-content: flex-end; margin-bottom: 4px;">
+                  <button class="luxury-btn btn-outline" id="clear-assets" style="padding: 4px 10px; font-size: 8px; font-weight: 600;">Remove All</button>
+                </div>
+                <div class="charm-list-hud" id="active-charms-list">
+                  <div style="text-align: center; color: var(--text-muted); font-size: 18px; padding: 16px;">No charms loaded.</div>
+                </div>
               </div>
-              <div class="charm-list-hud" id="active-charms-list">
-                <div style="text-align: center; color: var(--text-muted); font-size: 18px; padding: 16px;">No charms loaded.</div>
-              </div>
-            </div>
+            </details>
           </div>
         </div>
       </div>
@@ -945,7 +1130,7 @@
     <section class="section" id="about">
       <div class="wrap">
         <div class="about-grid">
-          <div class="portrait-frame">🧁</div>
+          <div class="portrait-frame">🐞</div>
           <div class="rpg-dialog">
             <h3>NPC CONVERSATION: THE SMITH</h3>
             <p>"Welcome to Bug's Closet, traveler. Every design constructed in our interactive virtual suite is translated into physical blueprints by our design leads."</p>
@@ -1025,7 +1210,7 @@
 
     <!-- ==================== FOOTER ==================== -->
     <footer>
-      <div class="foot-logo">Bug's Closet 🧁</div>
+      <div class="foot-logo">Bug's Closet 🐞</div>
       <div class="foot-links">
         <a href="#work">Collections</a>
         <a href="#showroom">Atelier</a>
@@ -1033,7 +1218,7 @@
         <a href="#faq">FAQ</a>
         <a href="#contact">Inquire</a>
       </div>
-      <p class="foot-note">© 2026 Bug's Closet 🧁. Designed for JRPG adventurers.<br>All creations forged in small, meticulously-controlled batches in Geneva and Tokyo.</p>
+      <p class="foot-note">© 2026 Bug's Closet 🐞. Designed for JRPG adventurers.<br>All creations forged in small, meticulously-controlled batches in Geneva and Tokyo.</p>
     </footer>
 
     <script type="module">
@@ -1953,14 +2138,21 @@
       // DRAG AND DROP / DOUBLE CLICK INVENTORY
       // =========================================================================
       const inventoryItems = document.querySelectorAll("#charms-inventory .grid-item");
+      let dragActive = false;
       
       inventoryItems.forEach(item => {
         item.addEventListener("dragstart", e => {
+          dragActive = true;
           e.dataTransfer.setData("text/plain", item.getAttribute("data-charm"));
           e.dataTransfer.effectAllowed = "copy";
         });
         
-        item.addEventListener("dblclick", e => {
+        item.addEventListener("dragend", () => {
+          setTimeout(() => { dragActive = false; }, 50);
+        });
+        
+        item.addEventListener("click", () => {
+          if (dragActive) return;
           const charmType = item.getAttribute("data-charm");
           const nextId = activeCharms.length > 0 ? Math.max(...activeCharms.map(c => c.id)) + 1 : 1;
           
@@ -2089,6 +2281,12 @@
 
       // ============== INITIALIZATION ==============
       setBaseStyle("thread_nylon"); 
+
+      // On mobile view, collapse Base Style and Attachments panels by default to save vertical space
+      if (window.innerWidth <= 1000) {
+        document.getElementById("base-style-details")?.removeAttribute("open");
+        document.getElementById("attachments-details")?.removeAttribute("open");
+      } 
 
       // ============== ANIMATION LOOP ==============
       function animate() {
